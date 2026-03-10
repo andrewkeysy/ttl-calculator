@@ -1687,11 +1687,35 @@ const STATE_DATA = {
   },
 };
 
-async function decodeVIN(vin) {
+const NEOVIN_KEY="orPrgAWaL7bIS9ci6oxcjNpl2385epI6";
+async function decodeVIN(vin){
+  // Tier 1: NeoVIN — rich data (MSRP, weight, MPG, fuel type)
+  try{
+    const res=await fetch(`https://api.marketcheck.com/v2/decode/car/neovin/${vin}/specs?api_key=${NEOVIN_KEY}`);
+    if(res.ok){
+      const d=await res.json();
+      return{
+        make:d.make||"",model:d.model||"",year:d.year?String(d.year):"",trim:d.trim||"",
+        bodyClass:d.body_type||d.body_subtype||"",
+        msrp:d.msrp||null,weight:d.weight||null,
+        fuelType:d.fuel_type||"",powertrainType:d.powertrain_type||"",
+        cityMpg:d.city_mpg||null,highwayMpg:d.highway_mpg||null,
+        source:"neovin"
+      };
+    }
+  }catch(e){}
+  // Tier 2: NHTSA fallback
   const res=await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`);
+  if(!res.ok) throw new Error("NHTSA unavailable");
   const data=await res.json();
   const get=v=>(data.Results||[]).find(r=>r.Variable===v)?.Value||"";
-  return{make:get("Make"),model:get("Model"),year:get("Model Year"),bodyClass:get("Body Class"),trim:get("Trim")};
+  return{
+    make:get("Make"),model:get("Model"),year:get("Model Year"),trim:get("Trim"),
+    bodyClass:get("Body Class"),
+    msrp:null,weight:null,fuelType:get("Fuel Type - Primary"),powertrainType:"",
+    cityMpg:null,highwayMpg:null,
+    source:"nhtsa"
+  };
 }
 
 async function lookupZIP(zip){
@@ -1820,14 +1844,20 @@ function App(){
       if(!r.make){setVinError("Could not decode VIN — check the number and try again.");}
       else{
         setVinResult(r);
-        if(r.year)hi("year",r.year);
-        const match=Object.keys(MSRP_TABLE).find(k=>k.toLowerCase().includes((r.model||"").toLowerCase()));
-        if(match&&r.year&&MSRP_TABLE[match][parseInt(r.year)]){
-          const found=MSRP_TABLE[match][parseInt(r.year)];
-          hi("msrp",String(found));
-          setMsrpMsg(`✓ Found: ${match} ${r.year} → $${found.toLocaleString()}`);
+        if(r.year) hi("year",r.year);
+        if(r.weight) hi("weight",String(r.weight));
+        if(r.msrp){
+          hi("msrp",String(r.msrp));
+          setMsrpMsg(`✓ NeoVIN: MSRP $${Number(r.msrp).toLocaleString()}${r.weight?" · "+Number(r.weight).toLocaleString()+" lbs":""}`);
         }else{
-          setMsrpMsg("Not in MSRP table — please enter MSRP manually.");
+          const match=Object.keys(MSRP_TABLE).find(k=>k.toLowerCase().includes((r.model||"").toLowerCase()));
+          if(match&&r.year&&MSRP_TABLE[match][parseInt(r.year)]){
+            const found=MSRP_TABLE[match][parseInt(r.year)];
+            hi("msrp",String(found));
+            setMsrpMsg(`✓ MSRP table: ${match} ${r.year} → $${found.toLocaleString()}${r.source==="nhtsa"?" (NHTSA fallback)":""}`);
+          }else{
+            setMsrpMsg(r.source==="nhtsa"?"⚠ NHTSA fallback — enter MSRP & weight manually or use the AI prompt below.":"MSRP not found — enter manually.");
+          }
         }
       }
     }catch(e){setVinError("Network error decoding VIN. Check your internet connection and try again.");}
@@ -1843,13 +1873,14 @@ function App(){
     const msrpVal=inputs.msrp?("$"+Number(inputs.msrp).toLocaleString()):null;
     const missing=[];
     if(needsMSRP&&!msrpVal)missing.push({id:"MSRP",ask:"Original MSRP (sticker price when new) for a "+v.year+" "+v.make+" "+v.model+(v.trim?" ("+v.trim+" trim)":"")});
-    if(needsWeight)missing.push({id:"WEIGHT",ask:"Curb weight in lbs for a "+v.year+" "+v.make+" "+v.model+(v.trim?" ("+v.trim+" trim)":"")});
-    if(sel==="OR")missing.push({id:"MPG",ask:"Combined EPA MPG for a "+v.year+" "+v.make+" "+v.model+(v.trim?" ("+v.trim+" trim)":"")+" -- needed for OR registration tier (0-19 / 20-39 / 40+)"});
-    if(sel==="MO")missing.push({id:"HP",ask:"Taxable horsepower for a "+v.year+" "+v.make+" "+v.model+(v.trim?" ("+v.trim+" trim)":"")+" -- needed for MO registration bracket"});
+    if(needsWeight&&!inputs.weight)missing.push({id:"WEIGHT",ask:"Curb weight in lbs for a "+v.year+" "+v.make+" "+v.model+(v.trim?" ("+v.trim+" trim)":"")});
+    if(sel==="OR"&&!inputs.mpg)missing.push({id:"MPG",ask:"Combined EPA MPG for a "+v.year+" "+v.make+" "+v.model+(v.trim?" ("+v.trim+" trim)":"")+" -- needed for OR registration tier (0-19 / 20-39 / 40+)"});
+    if(sel==="MO"&&!inputs.hp)missing.push({id:"HP",ask:"Taxable horsepower for a "+v.year+" "+v.make+" "+v.model+(v.trim?" ("+v.trim+" trim)":"")+" -- needed for MO registration bracket"});
     const alreadyHave=[];
     if(msrpVal)alreadyHave.push("MSRP: "+msrpVal);
     alreadyHave.push("Year: "+v.year,"Make: "+v.make,"Model: "+v.model);
     if(v.trim)alreadyHave.push("Trim: "+v.trim);
+    if(inputs.weight)alreadyHave.push("Weight: "+Number(inputs.weight).toLocaleString()+" lbs");
     if(missing.length===0){
       return"Vehicle: "+v.year+" "+v.make+" "+v.model+(v.trim?" ("+v.trim+")":"")+"\nState: "+sd.name+"\n"+alreadyHave.join("\n")+"\n\nAll required fields already populated.";
     }
