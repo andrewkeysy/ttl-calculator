@@ -1,0 +1,17 @@
+{
+  "name": "TT&L Registration Calculator",
+  "short_name": "TT&L Calc",
+  "description": "Vehicle Tax, Title & License fee calculator — all 50 states",
+  "start_url": "./ttl-calculator.html",
+  "display": "standalone",
+  "background_color": "#f4f5f7",
+  "theme_color": "#C7D600",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
