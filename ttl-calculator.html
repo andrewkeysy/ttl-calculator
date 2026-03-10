@@ -1690,6 +1690,7 @@ const STATE_DATA = {
 const NEOVIN_KEY="orPrgAWaL7bIS9ci6oxcjNpl2385epI6";
 async function decodeVIN(vin){
   // Tier 1: NeoVIN — rich data (MSRP, weight, MPG, fuel type)
+  let neovinErr=null;
   try{
     const res=await fetch(`https://api.marketcheck.com/v2/decode/car/neovin/${vin}/specs?api_key=${NEOVIN_KEY}`);
     if(res.ok){
@@ -1702,8 +1703,12 @@ async function decodeVIN(vin){
         cityMpg:d.city_mpg||null,highwayMpg:d.highway_mpg||null,
         source:"neovin"
       };
+    }else{
+      neovinErr=`HTTP ${res.status}`;
     }
-  }catch(e){}
+  }catch(e){
+    neovinErr=e.message||"fetch blocked";
+  }
   // Tier 2: NHTSA fallback
   const res=await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`);
   if(!res.ok) throw new Error("NHTSA unavailable");
@@ -1714,7 +1719,7 @@ async function decodeVIN(vin){
     bodyClass:get("Body Class"),
     msrp:null,weight:null,fuelType:get("Fuel Type - Primary"),powertrainType:"",
     cityMpg:null,highwayMpg:null,
-    source:"nhtsa"
+    source:"nhtsa",neovinErr
   };
 }
 
@@ -1854,9 +1859,9 @@ function App(){
           if(match&&r.year&&MSRP_TABLE[match][parseInt(r.year)]){
             const found=MSRP_TABLE[match][parseInt(r.year)];
             hi("msrp",String(found));
-            setMsrpMsg(`✓ MSRP table: ${match} ${r.year} → $${found.toLocaleString()}${r.source==="nhtsa"?" (NHTSA fallback)":""}`);
+            setMsrpMsg(`✓ MSRP table: ${match} ${r.year} → $${found.toLocaleString()}${r.source==="nhtsa"?` (NHTSA fallback — NeoVIN: ${r.neovinErr||"failed"})`:""}`);
           }else{
-            setMsrpMsg(r.source==="nhtsa"?"⚠ NHTSA fallback — enter MSRP & weight manually or use the AI prompt below.":"MSRP not found — enter manually.");
+            setMsrpMsg(r.source==="nhtsa"?`⚠ NHTSA fallback (NeoVIN error: ${r.neovinErr||"unknown"}) — enter MSRP & weight manually or use AI prompt.`:"MSRP not found — enter manually.");
           }
         }
       }
