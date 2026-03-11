@@ -188,10 +188,10 @@ const STATE_DATA = {
     calculate:(deal)=>{
       const {msrp,modelYear,county,newVehicle}=deal;
       const age=new Date().getFullYear()-parseInt(modelYear);
-      let dep=0.35;
-      if(age===1)dep*=0.95;
-      else if(age>=2)dep=Math.max(0.35*0.15,0.35*0.95*Math.pow(0.90,age-1));
-      const dmv=parseFloat(msrp)*dep;
+      // Depreciation per NRS 371.060 — fixed step table, 15% floor
+      const nvDep=[1.00,0.95,0.85,0.75,0.65,0.55,0.45,0.35,0.25,0.15];
+      const depFactor=nvDep[Math.min(age,nvDep.length-1)];
+      const dmv=parseFloat(msrp)*0.35*depFactor;
       const gst=Math.max(16,dmv*0.04);
       const sgst=(county.includes("Clark")||county.includes("Churchill"))?dmv*0.01:0;
       // DMV pollution control fee: $6 collected by DMV for Clark & Washoe counties
@@ -1692,13 +1692,16 @@ async function decodeVIN(vin){
   // Tier 1: NeoVIN — rich data (MSRP, weight, MPG, fuel type)
   let neovinErr=null;
   try{
-    const res=await fetch(`https://api.marketcheck.com/v2/decode/car/neovin/${vin}/specs?api_key=${NEOVIN_KEY}`);
+    const res=await fetch(`https://api.marketcheck.com/v2/decode/car/neovin/${vin}/specs?api_key=${NEOVIN_KEY}&include_generic=true`);
     if(res.ok){
       const d=await res.json();
+      // Pull published curb weight from generic specs — d.weight is GVW, not curb weight
+      const g=d.generic||{};
+      const curbWeight=parseInt(g["Published Curb Weight (lbs)"]||g["Curb Weight (lbs)"]||g["Curb Weight"]||0)||null;
       return{
         make:d.make||"",model:d.model||"",year:d.year?String(d.year):"",trim:d.trim||"",
         bodyClass:d.body_type||d.body_subtype||"",
-        msrp:d.msrp||null,weight:d.weight||null,
+        msrp:d.msrp||null,weight:curbWeight,
         fuelType:d.fuel_type||"",powertrainType:d.powertrain_type||"",
         cityMpg:d.city_mpg||null,highwayMpg:d.highway_mpg||null,
         source:"neovin"
