@@ -1,4 +1,4 @@
-const CACHE = "ttl-calc-v1";
+const CACHE = "ttl-calc-v2";
 const ASSETS = [
   "./ttl-calculator.html",
   "./manifest.json",
