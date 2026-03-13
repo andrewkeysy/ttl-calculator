@@ -89,24 +89,139 @@ const MSRP_TABLE = {
   "Kia Telluride":       {2025:36490,2024:35990,2023:34990,2022:32990,2021:32190},
 };
 
-const CA_COUNTIES = {
-  // Rates verified Mar 2026 — source: CA CDTFA county-level rates
-  "Alameda":0.1025,"Alpine":0.0725,"Amador":0.0775,"Butte":0.0825,
-  "Calaveras":0.0825,"Colusa":0.0775,"Contra Costa":0.0875,"Del Norte":0.0825,
-  "El Dorado":0.0725,"Fresno":0.07975,"Glenn":0.0725,"Humboldt":0.0875,
-  "Imperial":0.0775,"Inyo":0.0775,"Kern":0.0825,"Kings":0.0725,
-  "Lake":0.0725,"Lassen":0.0725,"Los Angeles":0.0975,"Madera":0.0775,
-  "Marin":0.0825,"Mariposa":0.0825,"Mendocino":0.07875,"Merced":0.0775,
-  "Modoc":0.0725,"Mono":0.0725,"Monterey":0.0875,"Napa":0.0775,
-  "Nevada":0.075,"Orange":0.0775,"Placer":0.0725,"Plumas":0.0725,
-  "Riverside":0.0775,"Sacramento":0.0775,"San Benito":0.0825,
-  "San Bernardino":0.0775,"San Diego":0.0775,"San Francisco":0.08625,
-  "San Joaquin":0.0775,"San Luis Obispo":0.0725,"San Mateo":0.09375,
-  "Santa Barbara":0.0775,"Santa Clara":0.09125,"Santa Cruz":0.095,
-  "Shasta":0.0725,"Sierra":0.0725,"Siskiyou":0.0725,"Solano":0.07375,
-  "Sonoma":0.0925,"Stanislaus":0.07875,"Sutter":0.0725,"Tehama":0.0725,
-  "Trinity":0.0725,"Tulare":0.0775,"Tuolumne":0.0725,"Ventura":0.0725,
-  "Yolo":0.0725,"Yuba":0.0825,
+const CA_CITIES = {
+  // City-level rates verified Mar 2026 — source: CA CDTFA. Cities sorted alphabetically.
+  "Adelanto":0.0775,"Agoura Hills":0.0975,"Alameda":0.1075,"Albany":0.1075,
+  "Alhambra":0.105,"Aliso Viejo":0.0775,"Alturas":0.0725,"Amador City":0.08,
+  "American Canyon":0.0775,"Anaheim":0.0775,"Anderson":0.0775,"Angels Camp":0.0875,
+  "Antioch":0.0975,"Apple Valley":0.0875,"Arcadia":0.105,"Arcata":0.1025,
+  "Arroyo Grande":0.0875,"Artesia":0.105,"Arvin":0.0825,"Atascadero":0.0875,
+  "Atherton":0.09375,"Atwater":0.0875,"Auburn":0.0725,"Avalon":0.1025,
+  "Avenal":0.0825,"Azusa":0.1075,
+  "Bakersfield":0.0825,"Baldwin Park":0.105,"Banning":0.0775,"Barstow":0.0875,
+  "Beaumont":0.0775,"Bell":0.0975,"Bell Gardens":0.105,"Bellflower":0.105,
+  "Belmont":0.09875,"Belvedere":0.0825,"Benicia":0.09625,"Berkeley":0.1025,
+  "Beverly Hills":0.0975,"Big Bear Lake":0.0775,"Biggs":0.0825,"Bishop":0.0875,
+  "Blue Lake":0.0975,"Blythe":0.0875,"Bradbury":0.0975,"Brawley":0.0875,
+  "Brea":0.0775,"Brentwood":0.0875,"Brisbane":0.09875,"Buellton":0.0775,
+  "Buena Park":0.0875,"Burbank":0.105,"Burlingame":0.09625,
+  "Calabasas":0.0975,"Calexico":0.0825,"California City":0.0825,"Calimesa":0.0775,
+  "Calipatria":0.0775,"Calistoga":0.0775,"Camarillo":0.0725,"Campbell":0.09875,
+  "Canyon Lake":0.0775,"Capitola":0.0925,"Carlsbad":0.0775,"Carmel-by-the-Sea":0.0925,
+  "Carpinteria":0.09,"Carson":0.105,"Cathedral City":0.0925,"Ceres":0.08375,
+  "Cerritos":0.0975,"Chico":0.0925,"Chino":0.0875,"Chino Hills":0.0775,
+  "Chowchilla":0.0875,"Chula Vista":0.0875,"Citrus Heights":0.0775,
+  "City of Commerce":0.105,"City of Industry":0.0975,"Claremont":0.0975,
+  "Clayton":0.0875,"Clearlake":0.0875,"Cloverdale":0.10,"Clovis":0.08975,
+  "Coachella":0.0875,"Coalinga":0.08975,"Colfax":0.0725,"Colma":0.09875,
+  "Colton":0.0875,"Colusa":0.0875,"Compton":0.1075,"Concord":0.0975,
+  "Corcoran":0.0825,"Corning":0.0775,"Corona":0.0875,"Coronado":0.0775,
+  "Corte Madera":0.09,"Costa Mesa":0.0775,"Cotati":0.1025,"Covina":0.105,
+  "Crescent City":0.0825,"Cudahy":0.105,"Culver City":0.1075,"Cupertino":0.09125,
+  "Cypress":0.0775,
+  "Daly City":0.09875,"Dana Point":0.0775,"Danville":0.0875,"Davis":0.0925,
+  "Del Mar":0.0875,"Del Rey Oaks":0.0925,"Delano":0.0825,"Desert Hot Springs":0.0875,
+  "Diamond Bar":0.0975,"Dinuba":0.085,"Dixon":0.08375,"Dorris":0.0725,
+  "Dos Palos":0.0825,"Downey":0.105,"Duarte":0.105,"Dublin":0.1025,"Dunsmuir":0.0775,
+  "East Palo Alto":0.09875,"Eastvale":0.0775,"El Cajon":0.0825,"El Centro":0.0825,
+  "El Cerrito":0.1025,"El Monte":0.105,"El Segundo":0.0975,"Elk Grove":0.0875,
+  "Emeryville":0.105,"Encinitas":0.0775,"Escalon":0.0875,"Escondido":0.0875,
+  "Etna":0.0725,"Eureka":0.1025,"Exeter":0.0875,
+  "Fairfax":0.09,"Fairfield":0.08375,"Farmersville":0.0875,"Ferndale":0.095,
+  "Fillmore":0.0725,"Firebaugh":0.07975,"Folsom":0.0775,"Fontana":0.0875,
+  "Fort Bragg":0.0925,"Fort Jones":0.0725,"Fortuna":0.095,"Foster City":0.09375,
+  "Fountain Valley":0.0875,"Fowler":0.08975,"Fremont":0.1025,"Fresno":0.0835,
+  "Fullerton":0.0775,
+  "Galt":0.0925,"Garden Grove":0.0875,"Gardena":0.105,"Gilroy":0.09125,
+  "Glendale":0.105,"Glendora":0.1075,"Goleta":0.0875,"Gonzales":0.0875,
+  "Grand Terrace":0.0775,"Grass Valley":0.08875,"Greenfield":0.095,"Gridley":0.0825,
+  "Grover Beach":0.0875,"Guadalupe":0.0875,"Gustine":0.0825,
+  "Half Moon Bay":0.09875,"Hanford":0.0825,"Hawaiian Gardens":0.105,
+  "Hawthorne":0.105,"Hayward":0.1075,"Healdsburg":0.0975,"Hemet":0.0875,
+  "Hercules":0.0925,"Hermosa Beach":0.0975,"Hesperia":0.0775,"Hidden Hills":0.0975,
+  "Highland":0.0775,"Hillsborough":0.09375,"Hollister":0.0925,"Holtville":0.0775,
+  "Hughson":0.07875,"Huntington Beach":0.0775,"Huntington Park":0.105,"Huron":0.08975,
+  "Imperial":0.0775,"Imperial Beach":0.0875,"Indian Wells":0.0775,"Indio":0.0875,
+  "Inglewood":0.1025,"Ione":0.0775,"Irvine":0.0775,"Irwindale":0.1075,"Isleton":0.0875,
+  "Jackson":0.0775,"Jurupa Valley":0.0775,
+  "Kerman":0.08975,"King City":0.0875,"Kingsburg":0.08975,
+  "La Cañada Flintridge":0.105,"La Habra":0.0875,"La Habra Heights":0.0975,
+  "La Mesa":0.085,"La Mirada":0.0975,"La Palma":0.0875,"La Puente":0.1025,
+  "La Quinta":0.0875,"La Verne":0.105,"Lafayette":0.0925,"Laguna Beach":0.0775,
+  "Laguna Hills":0.0775,"Laguna Niguel":0.0775,"Laguna Woods":0.0775,
+  "Lake Elsinore":0.0875,"Lake Forest":0.0775,"Lakeport":0.0875,"Lakewood":0.105,
+  "Lancaster":0.1125,"Larkspur":0.0925,"Lathrop":0.0875,"Lawndale":0.105,
+  "Lemon Grove":0.0875,"Lemoore":0.0825,"Lincoln":0.0725,"Lindsay":0.0875,
+  "Live Oak":0.0725,"Livermore":0.1025,"Livingston":0.0875,"Lodi":0.0825,
+  "Loma Linda":0.0775,"Lomita":0.105,"Lompoc":0.0875,"Long Beach":0.105,
+  "Loomis":0.075,"Los Alamitos":0.0925,"Los Altos":0.09125,"Los Altos Hills":0.09125,
+  "Los Angeles":0.0975,"Los Banos":0.0875,"Los Gatos":0.0925,"Loyalton":0.0725,
+  "Lynwood":0.1075,
+  "Madera":0.0825,"Malibu":0.1025,"Mammoth Lakes":0.0775,"Manhattan Beach":0.1025,
+  "Manteca":0.09,"Maricopa":0.0825,"Marina":0.0925,"Martinez":0.0975,
+  "Marysville":0.0825,"Maywood":0.0975,"McFarland":0.0825,"Mendota":0.09225,
+  "Menifee":0.0875,"Menlo Park":0.09375,"Merced":0.0825,"Mill Valley":0.0925,
+  "Millbrae":0.09375,"Milpitas":0.09375,"Mission Viejo":0.0775,"Modesto":0.08875,
+  "Monrovia":0.105,"Montague":0.0725,"Montclair":0.09,"Monte Sereno":0.09125,
+  "Montebello":0.105,"Monterey":0.0925,"Monterey Park":0.105,"Moorpark":0.0725,
+  "Moraga":0.0975,"Moreno Valley":0.0875,"Morgan Hill":0.09125,"Morro Bay":0.0875,
+  "Mount Shasta":0.075,"Mountain House":0.0775,"Mountain View":0.09125,"Murrieta":0.0875,
+  "Napa":0.0875,"National City":0.0875,"Needles":0.0775,"Nevada City":0.08875,
+  "Newark":0.1075,"Newman":0.07875,"Newport Beach":0.0775,"Norco":0.0875,
+  "Norwalk":0.105,"Novato":0.0925,
+  "Oakdale":0.08375,"Oakland":0.1075,"Oakley":0.0875,"Oceanside":0.0825,
+  "Ojai":0.0725,"Ontario":0.0875,"Orange":0.0775,"Orange Cove":0.07975,
+  "Orinda":0.0975,"Orland":0.0825,"Oroville":0.0925,"Oxnard":0.0925,
+  "Pacific Grove":0.0925,"Pacifica":0.09875,"Palm Desert":0.0875,"Palm Springs":0.0925,
+  "Palmdale":0.1125,"Palo Alto":0.09125,"Palos Verdes Estates":0.0975,
+  "Paradise":0.0875,"Paramount":0.105,"Parlier":0.08975,"Pasadena":0.105,
+  "Paso Robles":0.0875,"Patterson":0.07875,"Perris":0.0775,"Petaluma":0.1025,
+  "Pico Rivera":0.1075,"Piedmont":0.1025,"Pinole":0.1025,"Pismo Beach":0.0825,
+  "Pittsburg":0.0925,"Placentia":0.0875,"Placerville":0.0825,"Pleasant Hill":0.0925,
+  "Pleasanton":0.1025,"Plymouth":0.0775,"Point Arena":0.0925,"Pomona":0.105,
+  "Port Hueneme":0.0875,"Porterville":0.0925,"Portola":0.0725,"Portola Valley":0.09375,
+  "Poway":0.0775,
+  "Rancho Cordova":0.0875,"Rancho Cucamonga":0.0775,"Rancho Mirage":0.0775,
+  "Rancho Palos Verdes":0.0975,"Rancho Santa Margarita":0.0775,"Red Bluff":0.075,
+  "Redding":0.0725,"Redlands":0.0875,"Redondo Beach":0.0975,"Redwood City":0.09875,
+  "Reedley":0.09225,"Rialto":0.0775,"Richmond":0.0975,"Ridgecrest":0.0925,
+  "Rio Dell":0.095,"Rio Vista":0.09125,"Ripon":0.0775,"Riverbank":0.07875,
+  "Riverside":0.0875,"Rocklin":0.0725,"Rohnert Park":0.0975,"Rolling Hills":0.0975,
+  "Rolling Hills Estates":0.0975,"Rosemead":0.0975,"Roseville":0.0775,"Ross":0.0825,
+  "Sacramento":0.0875,"Salinas":0.0925,"San Anselmo":0.0925,"San Bernardino":0.0875,
+  "San Bruno":0.09875,"San Carlos":0.09375,"San Clemente":0.0775,"San Diego":0.0775,
+  "San Dimas":0.0975,"San Fernando":0.105,"San Francisco":0.08625,
+  "San Gabriel":0.105,"San Jacinto":0.0875,"San Joaquin":0.07975,
+  "San Jose":0.09375,"San Juan Bautista":0.09,"San Juan Capistrano":0.0775,
+  "San Leandro":0.1075,"San Luis Obispo":0.0875,"San Marcos":0.0875,
+  "San Marino":0.0975,"San Mateo":0.09625,"San Pablo":0.095,"San Rafael":0.0925,
+  "Sand City":0.0925,"Sanger":0.08725,"Santa Ana":0.0925,"Santa Barbara":0.0925,
+  "Santa Clara":0.09125,"Santa Clarita":0.0975,"Santa Cruz":0.0975,
+  "Santa Fe Springs":0.1075,"Santa Maria":0.0875,"Santa Monica":0.1075,
+  "Santa Paula":0.0925,"Santa Rosa":0.10,"Santee":0.0775,"Saratoga":0.09125,
+  "Sausalito":0.0925,"Scotts Valley":0.0975,"Seal Beach":0.0925,"Seaside":0.0925,
+  "Sebastopol":0.105,"Selma":0.08475,"Shafter":0.0725,"Shasta Lake":0.0725,
+  "Sierra Madre":0.105,"Signal Hill":0.105,"Simi Valley":0.0725,"Solana Beach":0.0875,
+  "Soledad":0.0925,"Solvang":0.0875,"Sonoma":0.1025,"Sonora":0.0875,
+  "South El Monte":0.1075,"South Gate":0.1075,"South Lake Tahoe":0.0875,
+  "South Pasadena":0.105,"South San Francisco":0.09875,"St. Helena":0.0825,
+  "Stanton":0.0875,"Stockton":0.09,"Suisun City":0.09125,"Sunnyvale":0.09125,
+  "Susanville":0.0825,"Sutter Creek":0.0875,
+  "Taft":0.0825,"Tehachapi":0.0825,"Tehama":0.0725,"Temecula":0.0875,
+  "Temple City":0.0975,"Thousand Oaks":0.0725,"Tiburon":0.0825,"Torrance":0.1025,
+  "Tracy":0.0825,"Trinidad":0.095,"Truckee":0.09,"Tulare":0.0825,"Tulelake":0.0725,
+  "Turlock":0.08625,"Tustin":0.0775,"Twentynine Palms":0.0775,
+  "Ukiah":0.08875,"Union City":0.1075,"Upland":0.0775,
+  "Vacaville":0.08125,"Vallejo":0.0925,"Ventura":0.0775,"Vernon":0.105,
+  "Victorville":0.0875,"Villa Park":0.0775,"Visalia":0.085,"Vista":0.0825,
+  "Walnut":0.0975,"Walnut Creek":0.0925,"Wasco":0.0825,"Waterford":0.07875,
+  "Watsonville":0.0975,"Weed":0.075,"West Covina":0.0975,"West Hollywood":0.105,
+  "West Sacramento":0.0925,"Westlake Village":0.0975,"Westminster":0.0925,
+  "Westmorland":0.0775,"Wheatland":0.0775,"Whittier":0.105,"Wildomar":0.0875,
+  "Williams":0.0825,"Willits":0.09125,"Willows":0.0875,"Windsor":0.0925,
+  "Winters":0.0825,"Woodlake":0.0875,"Woodland":0.08,"Woodside":0.09375,
+  "Yorba Linda":0.0775,"Yountville":0.0775,"Yreka":0.0875,"Yuba City":0.0725,
+  "Yucaipa":0.0875,"Yucca Valley":0.0875,
 };
 
 function taxableBase(stateCode, {purchasePrice,msrp,tradeIn,rebate,transport,warranty,docFee}) {
@@ -125,7 +240,7 @@ function taxableBase(stateCode, {purchasePrice,msrp,tradeIn,rebate,transport,war
     WA:{tradeIn:true, rebate:true,  transport:true,  warranty:true,  doc:true },
     ID:{tradeIn:true, rebate:true,  transport:false, warranty:false, doc:false},
     NM:{tradeIn:true, rebate:true,  transport:false, warranty:false, doc:false},
-    CA:{tradeIn:true, rebate:true,  transport:true,  warranty:false, doc:false},
+    CA:{tradeIn:false,rebate:false, transport:true,  warranty:false, doc:false},
     UT:{tradeIn:true, rebate:true,  transport:false, warranty:false, doc:false},
     TX:{tradeIn:true, rebate:true,  transport:false, warranty:false, doc:false},
     OR:{tradeIn:false,rebate:false, transport:false, warranty:false, doc:false},
@@ -452,23 +567,24 @@ const STATE_DATA = {
   },
   CA:{
     name:"California",lastVerified:"Mar 2026",
-    salesTaxNote:"7.25% state minimum + district taxes. Varies widely by county. Update quarterly.",
+    salesTaxNote:"7.25% state minimum + district taxes. Varies by city — city rates can exceed county rate. Update quarterly.",
     salesTaxUpdateFreq:"Quarterly (CA Board of Equalization)",
-    inputs:["msrp","year","weight","county","newVehicle"],
-    counties:Object.keys(CA_COUNTIES).sort(),
+    inputs:["msrp","year","weight","county","newVehicle","evType"],
+    countyLabel:"City / Municipality",
+    counties:Object.keys(CA_CITIES).sort(),
     calculate:(deal)=>{
-      const {msrp,modelYear,weight,county,newVehicle}=deal;
+      const {msrp,modelYear,weight,county,newVehicle,evType}=deal;
       const m=parseFloat(msrp)||0;
       const age=new Date().getFullYear()-parseInt(modelYear);
-      const vlfDep=[1.0,0.80,0.67,0.57,0.48,0.40,0.33,0.28,0.24,0.20];
+      const vlfDep=[1.0,0.90,0.80,0.70,0.60,0.50,0.40,0.30,0.25,0.20,0.15];
       const dep=vlfDep[Math.min(age,vlfDep.length-1)];
       const vlf=m*dep*0.0065;
       const tif=m<=4999?33:m<=24999?66:m<=34999?132:m<=59999?198:231;
       const w=parseInt(weight)||3500;
       const wf=w<=4000?0:w<=6000?2:4;
-      const smog=age>=8?20:0;
-      const titleFee=newVehicle?28:15;
-      const taxRate=CA_COUNTIES[county]||0.0725;
+      const smog=age<=8?25:0;
+      const titleFee=28;
+      const taxRate=CA_CITIES[county]||0.0725;
       const taxBase=taxableBase("CA",deal);
       const salesTax=taxBase>0?taxBase*taxRate:0;
       return[
@@ -478,13 +594,14 @@ const STATE_DATA = {
         {label:"Transportation Improvement Fee",amount:tif,note:"Value-based tier: $33 / $66 / $132 / $198 / $231"},
         {label:"County / District Fee",amount:10.00,note:"Base estimate — some districts charge more"},
         ...(wf>0?[{label:"Weight Fee (over 4,000 lbs)",amount:wf}]:[]),
-        ...(smog>0?[{label:"Smog Abatement Fee (vehicle 8+ yrs)",amount:smog,note:"Paid to DMV instead of obtaining smog cert"}]:[]),
-        {label:"Title Fee",amount:titleFee},
-        ...(newVehicle?[{label:"DMV Document Processing Fee",amount:28.00}]:[]),
-        ...(salesTax>0?[{label:`Sales Tax (${(taxRate*100).toFixed(2)}% — ${county||"CA"} County)`,amount:+salesTax.toFixed(2),note:"Dealer sales (new & used). CA taxes purchase price less trade-in. Does NOT include warranty/GAP.",isTax:true}]:[]),
+        ...(smog>0?[{label:"Smog Abatement Fee (vehicles ≤8 yrs)",amount:smog,note:"Paid annually to DMV in lieu of smog test — CA Bureau of Automotive Repair"}]:[]),
+        ...(evType==="electric"?[{label:"EV Road Improvement Fee (ZEV)",amount:121,note:"Annual fee for zero-emission vehicles — CA VC § 9250.6, eff. Jan 1 2026"}]:[]),
+        {label:"Title Fee",amount:titleFee,note:"Standard title/transfer fee — CA DMV (Jan 2026)"},
+        ...(newVehicle?[{label:"License Plate Fee",amount:28.00,note:"Original plates for new vehicle — CA DMV"}]:[]),
+        ...(salesTax>0?[{label:`Sales Tax (${(taxRate*100).toFixed(3).replace(/\.?0+$/,"")}% — ${county||"CA"})`,amount:+salesTax.toFixed(2),note:"Gross purchase price — NO trade-in or rebate deduction (CA Rev. & Tax. Code § 6011).",isTax:true}]:[]),
       ];
     },
-    notes:"California is the most complex state. VLF alone can exceed $500 on a new vehicle. Reg fee $76, CHP $34, TIF $33–$231 by value. Select county for accurate sales tax. Rates verified Mar 2026 from CDTFA & CA DMV.",
+    notes:"California is the most complex state. VLF alone can exceed $500 on a new vehicle. Reg fee $76, CHP $34, TIF $33–$231 by value. EV owners pay $121 ZEV Road Improvement Fee (CA VC § 9250.6). CA is a gross sales tax state — NO trade-in or rebate deduction (§ 6011). Smog abatement $25/yr for vehicles ≤8 years old. Select city for accurate sales tax — city rates can exceed county base (e.g. Lancaster & Palmdale 11.25%, many LA cities 10.5–10.75%). 484 cities covered. Rates verified Mar 2026 from CDTFA.",
   },
   UT:{
     name:"Utah",lastVerified:"Mar 2026",
@@ -1964,6 +2081,7 @@ function App(){
       transport:deal.transport||0,
       warranty:deal.warranty||0,
       docFee:deal.docFee||0,
+      evType:inputs.evType||"gas",
     };
     const lines=sd.calculate(fullDeal);
     setBufPct(BUFFER_RATES[cx]);
@@ -2139,6 +2257,15 @@ function App(){
                   </div>
                 </Field>
               )}
+              {sd.inputs.includes("evType")&&(
+                <Field label="Fuel / Powertrain" hint="EV adds $121 Road Improvement Fee (CA VC § 9250.6)">
+                  <div style={{display:"flex",gap:8}}>
+                    {[["gas","Gas / Hybrid"],["electric","Electric (ZEV)"]].map(([v,l])=>(
+                      <button key={v} onClick={()=>hi("evType",v)} style={{flex:1,padding:"9px",borderRadius:7,border:`1.5px solid ${(inputs.evType||"gas")===v?BRAND:BORDER}`,background:(inputs.evType||"gas")===v?BRAND_BG:"#fafafa",color:(inputs.evType||"gas")===v?BRAND_DARK:TEXT_MID,fontWeight:(inputs.evType||"gas")===v?700:400,fontSize:13,cursor:"pointer"}}>{l}</button>
+                    ))}
+                  </div>
+                </Field>
+              )}
               {sd.inputs.includes("inRTA")&&(
                 <Field label="In Sound Transit RTA District?" hint="King / Pierce / Snohomish counties only">
                   <div style={{display:"flex",gap:8}}>
@@ -2180,7 +2307,7 @@ function App(){
               {dealOpen&&(
                 <div style={{padding:"16px",borderTop:`1px solid ${BORDER}`,display:"flex",flexDirection:"column",gap:14,background:"#fff"}}>
                   <div style={{fontSize:11,color:TEXT_MUTED,lineHeight:1.5,padding:"8px 10px",background:"#f8f9fa",borderRadius:6,border:`1px solid ${BORDER}`}}>
-                    These fields affect the <strong>taxable base</strong> used for sales/use tax. Rules vary by state — trade-ins always reduce the taxable amount.
+                    These fields affect the <strong>taxable base</strong> used for sales/use tax. Rules vary by state — trade-ins reduce taxable amount in most states (not CA).
                   </div>
                   <Field label="Trade-In Value ($)" hint="Reduces taxable sale price in all states">
                     <DollarInput value={deal.tradeIn||""} onChange={v=>hd("tradeIn",v)} placeholder="0"/>
