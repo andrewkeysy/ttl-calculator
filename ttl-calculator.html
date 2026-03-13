@@ -241,131 +241,168 @@ const STATE_DATA = {
   },
   CO:{
     name:"Colorado",lastVerified:"Mar 2026",
-    salesTaxNote:"State 2.9% + county + city. Highly variable by jurisdiction.",
-    salesTaxUpdateFreq:"Periodic (CO Dept of Revenue updates)",
-    inputs:["msrp","year","weight","county"],
-    counties:["Denver (~9.15%)","El Paso / Colorado Springs (~6.20%)","Arapahoe (~6.75%)","Jefferson (~6.50%)","Adams (~6.75%)","Boulder (~8.845%)","Larimer (~6.55%)","Weld (~5.90%)","Other (~5.90%)"],
+    salesTaxNote:"Exact city-level rates — Jan–Jun 2026 (CO Dept of Revenue). State 2.9% + county + city.",
+    salesTaxUpdateFreq:"Bi-annual (CO Dept of Revenue — updates Jan & Jul)",
+    inputs:["msrp","year","weight","county","vehicleType"],
+    countyLabel:"City / Jurisdiction",
+    counties:["Aguilar (7.40%)","Akron (6.90%)","Alamosa (8.40%)","Alma (7.90%)","Antonito (8.90%)","Arriba (6.90%)","Arvada (8.21%)","Aspen (10.35%)","Ault (5.90%)","Aurora (8.75%)","Avon (9.69%)","Avon Unincorporated (8.89%)","Bailey (3.90%)","Basalt (8.45%)","Bayfield (8.90%)","Bennett (7.25%)","Berthoud (7.90%)","Bethune (2.90%)","Black Hawk (8.90%)","Blanca (7.90%)","Blue River (8.88%)","Bonanza (5.40%)","Boone (3.90%)","Boulder (9.20%)","Bow Mar (4.25%)","Branson (4.40%)","Breckenridge (8.88%)","Brighton (6.65%)","Brookside (5.40%)","Broomfield (7.15%)","Broomfield Arista Lid (8.35%)","Broomfield Flatiron Lid (8.16%)","Brush (6.90%)","Buena Vista (8.15%)","Burlington (5.90%)","Calhan (8.13%)","Canon City (8.70%)","Carbondale (10.15%)","Castle Pines (7.75%)","Castle Rock (8.10%)","Cedaredge (8.50%)","Centennial (6.75%)","Center (9.50%)","Central City (8.90%)","Cheraw (3.90%)","Cherry Hills Vlg (7.75%)","Cheyenne Wells (4.90%)","Clifton (5.27%)","Coal Creek (5.40%)","Cokedale (5.40%)","Collbran (7.27%)","Colorado Springs (8.20%)","Columbine Valley (7.25%)","Commerce City (9.75%)","Como (4.90%)","Conifer Metropolitan District (5.25%)","Conifer Unincorporated (5.00%)","Copper Mountain (6.38%)","Cortez (7.69%)","Craig (8.90%)","Crawford (8.50%)","Creede (9.50%)","Crested Butte (9.40%)","Crestone (8.90%)","Cripple Creek (7.20%)","Crook (6.40%)","Crowley (4.90%)","Dacono (5.90%)","De Beque (7.27%)","Deer Trail (5.00%)","Del Norte (7.50%)","Delta (9.50%)","Denver (9.15%)","Dillon (8.88%)","Dinosaur (7.00%)","Divide (5.40%)","Dolores (7.30%)","Dove Creek (8.00%)","Drake (3.95%)","Durango (9.40%)","Eads (4.90%)","Eagle (9.40%)","Eagle-Vail Metropolitan District (6.69%)","Eaton (6.90%)","Eckley (5.00%)","Edgewater (8.00%)","Edwards Metropolitan District (6.69%)","Elizabeth (7.90%)","Empire (10.55%)","Englewood (8.05%)","Erie (8.84%)","Estes Park (8.95%)","Evans (8.40%)","Fairplay (8.90%)","Federal Heights (8.75%)","Firestone (7.00%)","Flagler (4.90%)","Fleming (5.90%)","Florence (7.90%)","Florissant (5.40%)","Fort Collins (8.30%)","Fort Lupton (6.90%)","Fort Morgan (7.90%)","Fountain (7.53%)","Fowler (6.90%)","Foxfield (8.00%)","Franktown (4.00%)","Fraser (9.20%)","Frederick (6.90%)","Frisco (8.38%)","Fruita (8.27%)","Garden City (6.90%)","Gateway (6.27%)","Genoa (4.90%)","Georgetown (10.05%)","Gilcrest (6.90%)","Glen Haven (3.95%)","Glendale (8.00%)","Glenwood Springs (9.35%)","Golden (7.50%)","Granada (5.90%)","Granby (8.20%)","Grand Junction (8.66%)","Grand Lake (9.20%)","Greeley (7.01%)","Green Mtn Falls (8.13%)","Greenwood Village (7.25%)","Grover (3.90%)","Gunnison (8.90%)","Gypsum (7.40%)","Hartman (3.90%)","Hartsel (4.90%)","Haswell (2.90%)","Haxtun (7.40%)","Hayden (8.90%)","Highlands Ranch (5.00%)","Hillrose (2.90%)","Holly (7.90%)","Holyoke (5.40%)","Hooper (7.90%)","Hot Sulphur Springs (8.20%)","Hotchkiss (8.50%)","Hudson (6.90%)","Hugo (6.90%)","Idaho Springs (10.55%)","Ignacio (8.90%)","Iliff (3.90%)","Jamestown (5.34%)","Jefferson (4.90%)","Johnstown (6.40%)","Johnstown In Pif (5.45%)","Julesburg (8.20%)","Keenesburg (5.90%)","Kersey (6.50%)","Keystone (6.38%)","Kim (4.40%)","Kiowa (5.40%)","Kit Carson (4.90%)","Kremmling (8.20%)","La Jara (7.90%)","La Junta (8.90%)","La Salle (6.40%)","La Veta (9.90%)","Lafayette (9.11%)","Lake City (9.15%)","Lake George (5.40%)","Lakeside (7.30%)","Lakewood (7.50%)","Lamar (6.90%)","Larkspur (7.90%)","Las Animas (7.90%)","Leadville (7.40%)","Limon (7.65%)","Littleton (8.00%)","Littleton-Douglas (7.00%)","Lochbuie (6.90%)","Log Lane Village (5.90%)","Lone Tree (7.81%)","Longmont (7.43%)","Louisville (9.11%)","Louviers (4.00%)","Loveland (6.95%)","Lyons (9.34%)","Manassa (5.90%)","Mancos (7.30%)","Manitou Springs (9.03%)","Manzanola (5.90%)","Marble (9.40%)","Mead (5.90%)","Meeker (6.50%)","Merino (5.90%)","Milliken (5.40%)","Minturn (9.69%)","Moffat (7.40%)","Monte Vista (8.50%)","Montezuma (8.38%)","Montrose (8.53%)","Monument (7.63%)","Monument Pif (6.63%)","Morrison (8.25%)","Mountain View (8.50%)","Mountain Village (9.47%)","Mt Crested Butte (9.90%)","Naturita (8.65%)","Nederland (9.59%)","New Castle (8.45%)","Niwot (6.34%)","Northglenn (8.75%)","Norwood (6.90%)","Nucla (8.65%)","Nunn (4.90%)","Oak Creek (6.90%)","Ohio (3.90%)","Olathe (8.65%)","Olney Springs (4.90%)","Ophir (5.90%)","Orchard City (6.50%)","Ordway (6.90%)","Otis (6.40%)","Ouray (9.45%)","Ovid (6.90%)","Pagosa Springs (7.90%)","Palisade (7.27%)","Palmer Lake (7.13%)","Paoli (3.90%)","Paonia (9.50%)","Parachute (7.90%)","Parker (8.00%)","Peetz (3.90%)","Pierce (4.90%)","Pitkin (6.90%)","Platteville (5.90%)","Poncha Springs (7.65%)","Pritchett (2.90%)","Prospect Valley (2.90%)","Pueblo (7.60%)","Pueblo West (5.90%)","Purgatory (8.40%)","Ramah (7.13%)","Rangely (6.50%)","Raymer (2.90%)","Red Cliff (8.69%)","Rico (8.97%)","Ridgway (9.05%)","Rifle (8.40%)","Rockvale (5.40%)","Rocky Ford (7.90%)","Romeo (8.80%)","Rye (3.90%)","Saguache (9.40%)","Salida (8.65%)","San Luis (7.90%)","Sanford (4.90%)","Sawpit (6.90%)","Sedalia (4.00%)","Sedgwick (6.90%)","Seibert (4.90%)","Severance (5.90%)","Sheridan (7.75%)","Sheridan Lake (2.90%)","Silt (7.15%)","Silver Cliff (7.90%)","Silver Plume (8.55%)","Silverthorne (8.38%)","Silverthorne Unincorporated-Summit (10.38%)","Silverton (10.40%)","Simla (7.90%)","Snowmass Village (10.65%)","Somerset (3.90%)","South Fork (9.50%)","Springfield (4.90%)","Starkville (4.40%)","Steamboat Springs (8.40%)","Sterling (7.00%)","Stratton (4.90%)","Sugar City (4.90%)","Superior (9.12%)","Swink (3.90%)","Telluride (9.47%)","Thornton (8.50%)","Timnath (7.15%)","Trinidad (8.40%)","Two Buttes (2.90%)","Vail (9.40%)","Victor (6.90%)","Vilas (2.90%)","Vona (2.90%)","Walden (7.90%)","Walsenburg (8.90%)","Walsh (5.90%)","Ward (7.34%)","Weld/Lochbuie Rtd Only (7.90%)","Wellington (6.95%)","Westcliffe (7.90%)","Westminster (8.75%)","Wheat Ridge (8.00%)","Whitewater (6.27%)","Wiggins (5.90%)","Wiley (5.90%)","Willamsburg (5.40%)","Windsor (6.55%)","Winter Park (11.20%)","Woodland Park (8.13%)","Wray (5.40%)","Yampa (7.90%)","Yuma (6.65%)"],
+    zipMap:{"80001":"Arvada (8.21%)","80002":"Arvada (8.21%)","80003":"Westminster (8.75%)","80004":"Arvada (8.21%)","80005":"Arvada (8.21%)","80006":"Arvada (8.21%)","80007":"Arvada (8.21%)","80010":"Aurora (8.75%)","80011":"Aurora (8.75%)","80012":"Aurora (8.75%)","80013":"Aurora (8.75%)","80014":"Aurora (8.75%)","80015":"Aurora (8.75%)","80016":"Foxfield (8.00%)","80017":"Aurora (8.75%)","80018":"Aurora (8.75%)","80019":"Aurora (8.75%)","80020":"Broomfield (7.15%)","80021":"Westminster (8.75%)","80022":"Commerce City (9.75%)","80023":"Broomfield (7.15%)","80026":"Lafayette (9.11%)","80027":"Superior (9.12%)","80030":"Westminster (8.75%)","80031":"Westminster (8.75%)","80033":"Wheat Ridge (8.00%)","80034":"Wheat Ridge (8.00%)","80035":"Westminster (8.75%)","80036":"Westminster (8.75%)","80037":"Commerce City (9.75%)","80038":"Broomfield (7.15%)","80102":"Bennett (7.25%)","80104":"Castle Rock (8.10%)","80105":"Deer Trail (5.00%)","80107":"Elizabeth (7.90%)","80108":"Castle Rock (8.10%)","80109":"Castle Rock (8.10%)","80110":"Sheridan (7.75%)","80111":"Greenwood Village (7.25%)","80112":"Englewood (8.05%)","80113":"Englewood (8.05%)","80117":"Kiowa (5.40%)","80118":"Larkspur (7.90%)","80120":"Littleton (8.00%)","80121":"Littleton (8.00%)","80122":"Littleton (8.00%)","80123":"Littleton (8.00%)","80124":"Lone Tree (7.81%)","80125":"Littleton (8.00%)","80126":"Littleton (8.00%)","80127":"Littleton (8.00%)","80128":"Littleton (8.00%)","80129":"Littleton (8.00%)","80130":"Littleton (8.00%)","80131":"Louviers (4.00%)","80132":"Monument (7.63%)","80133":"Palmer Lake (7.13%)","80134":"Parker (8.00%)","80135":"Sedalia (4.00%)","80138":"Parker (8.00%)","80201":"Denver (9.15%)","80202":"Denver (9.15%)","80203":"Denver (9.15%)","80204":"Denver (9.15%)","80205":"Denver (9.15%)","80206":"Denver (9.15%)","80207":"Denver (9.15%)","80208":"Denver (9.15%)","80209":"Denver (9.15%)","80210":"Denver (9.15%)","80211":"Denver (9.15%)","80212":"Mountain View (8.50%)","80214":"Lakewood (7.50%)","80215":"Lakewood (7.50%)","80216":"Denver (9.15%)","80217":"Denver (9.15%)","80218":"Denver (9.15%)","80219":"Denver (9.15%)","80220":"Denver (9.15%)","80221":"Denver (9.15%)","80222":"Denver (9.15%)","80223":"Denver (9.15%)","80224":"Denver (9.15%)","80225":"Denver (9.15%)","80226":"Lakewood (7.50%)","80227":"Lakewood (7.50%)","80228":"Lakewood (7.50%)","80229":"Thornton (8.50%)","80230":"Denver (9.15%)","80231":"Denver (9.15%)","80232":"Lakewood (7.50%)","80233":"Thornton (8.50%)","80234":"Northglenn (8.75%)","80235":"Denver (9.15%)","80236":"Denver (9.15%)","80237":"Denver (9.15%)","80238":"Denver (9.15%)","80239":"Denver (9.15%)","80241":"Thornton (8.50%)","80243":"Denver (9.15%)","80246":"Glendale (8.00%)","80247":"Denver (9.15%)","80248":"Denver (9.15%)","80249":"Denver (9.15%)","80250":"Denver (9.15%)","80251":"Denver (9.15%)","80252":"Denver (9.15%)","80256":"Denver (9.15%)","80257":"Denver (9.15%)","80259":"Denver (9.15%)","80260":"Federal Heights (8.75%)","80261":"Denver (9.15%)","80262":"Denver (9.15%)","80263":"Denver (9.15%)","80264":"Denver (9.15%)","80265":"Denver (9.15%)","80266":"Denver (9.15%)","80271":"Denver (9.15%)","80273":"Denver (9.15%)","80274":"Denver (9.15%)","80281":"Denver (9.15%)","80290":"Denver (9.15%)","80291":"Denver (9.15%)","80293":"Denver (9.15%)","80294":"Denver (9.15%)","80295":"Denver (9.15%)","80299":"Denver (9.15%)","80301":"Boulder (9.20%)","80302":"Boulder (9.20%)","80303":"Boulder (9.20%)","80304":"Boulder (9.20%)","80305":"Boulder (9.20%)","80309":"Boulder (9.20%)","80310":"Boulder (9.20%)","80401":"Golden (7.50%)","80402":"Golden (7.50%)","80403":"Golden (7.50%)","80420":"Alma (7.90%)","80421":"Bailey (3.90%)","80422":"Black Hawk (8.90%)","80424":"Breckenridge (8.88%)","80427":"Central City (8.90%)","80432":"Como (4.90%)","80433":"Coal Creek (5.40%)","80435":"Keystone (6.38%)","80438":"Empire (10.55%)","80440":"Fairplay (8.90%)","80442":"Fraser (9.20%)","80443":"Frisco (8.38%)","80444":"Georgetown (10.05%)","80446":"Granby (8.20%)","80447":"Grand Lake (9.20%)","80449":"Hartsel (4.90%)","80451":"Hot Sulphur Springs (8.20%)","80452":"Idaho Springs (10.55%)","80455":"Jamestown (5.34%)","80456":"Jefferson (4.90%)","80459":"Kremmling (8.20%)","80461":"Leadville (7.40%)","80465":"Morrison (8.25%)","80466":"Nederland (9.59%)","80467":"Oak Creek (6.90%)","80476":"Silver Plume (8.55%)","80477":"Steamboat Springs (8.40%)","80480":"Walden (7.90%)","80481":"Ward (7.34%)","80482":"Winter Park (11.20%)","80483":"Yampa (7.90%)","80487":"Steamboat Springs (8.40%)","80488":"Steamboat Springs (8.40%)","80498":"Silverthorne (8.38%)","80501":"Longmont (7.43%)","80502":"Longmont (7.43%)","80503":"Niwot (6.34%)","80504":"Longmont (7.43%)","80513":"Berthoud (7.90%)","80514":"Dacono (5.90%)","80515":"Drake (3.95%)","80516":"Erie (8.84%)","80517":"Estes Park (8.95%)","80520":"Firestone (7.00%)","80521":"Fort Collins (8.30%)","80522":"Fort Collins (8.30%)","80523":"Fort Collins (8.30%)","80524":"Fort Collins (8.30%)","80525":"Fort Collins (8.30%)","80526":"Fort Collins (8.30%)","80527":"Fort Collins (8.30%)","80528":"Fort Collins (8.30%)","80530":"Frederick (6.90%)","80532":"Glen Haven (3.95%)","80534":"Johnstown (6.40%)","80537":"Loveland (6.95%)","80538":"Loveland (6.95%)","80539":"Loveland (6.95%)","80540":"Lyons (9.34%)","80542":"Mead (5.90%)","80543":"Milliken (5.40%)","80547":"Timnath (7.15%)","80549":"Wellington (6.95%)","80550":"Windsor (6.55%)","80601":"Brighton (6.65%)","80602":"Brighton (6.65%)","80603":"Lochbuie (6.90%)","80610":"Ault (5.90%)","80615":"Eaton (6.90%)","80620":"Evans (8.40%)","80621":"Fort Lupton (6.90%)","80623":"Gilcrest (6.90%)","80631":"Greeley (7.01%)","80632":"Greeley (7.01%)","80633":"Greeley (7.01%)","80634":"Greeley (7.01%)","80638":"Greeley (7.01%)","80639":"Greeley (7.01%)","80640":"Commerce City (9.75%)","80642":"Hudson (6.90%)","80643":"Keenesburg (5.90%)","80644":"Kersey (6.50%)","80645":"La Salle (6.40%)","80648":"Nunn (4.90%)","80650":"Pierce (4.90%)","80651":"Platteville (5.90%)","80654":"Wiggins (5.90%)","80701":"Fort Morgan (7.90%)","80705":"Log Lane Village (5.90%)","80720":"Akron (6.90%)","80723":"Brush (6.90%)","80726":"Crook (6.40%)","80727":"Eckley (5.00%)","80728":"Fleming (5.90%)","80729":"Grover (3.90%)","80731":"Haxtun (7.40%)","80733":"Hillrose (2.90%)","80734":"Holyoke (5.40%)","80736":"Iliff (3.90%)","80737":"Julesburg (8.20%)","80741":"Merino (5.90%)","80742":"Raymer (2.90%)","80743":"Otis (6.40%)","80744":"Ovid (6.90%)","80746":"Paoli (3.90%)","80747":"Peetz (3.90%)","80749":"Sedgwick (6.90%)","80751":"Sterling (7.00%)","80758":"Wray (5.40%)","80759":"Yuma (6.65%)","80804":"Arriba (6.90%)","80805":"Bethune (2.90%)","80807":"Burlington (5.90%)","80808":"Calhan (8.13%)","80810":"Cheyenne Wells (4.90%)","80813":"Cripple Creek (7.20%)","80814":"Divide (5.40%)","80815":"Flagler (4.90%)","80816":"Florissant (5.40%)","80817":"Fountain (7.53%)","80818":"Genoa (4.90%)","80821":"Hugo (6.90%)","80825":"Kit Carson (4.90%)","80827":"Lake George (5.40%)","80828":"Limon (7.65%)","80829":"Manitou Springs (9.03%)","80832":"Ramah (7.13%)","80834":"Seibert (4.90%)","80835":"Simla (7.90%)","80836":"Stratton (4.90%)","80860":"Victor (6.90%)","80861":"Vona (2.90%)","80863":"Woodland Park (8.13%)","80866":"Woodland Park (8.13%)","80901":"Colorado Springs (8.20%)","80902":"Colorado Springs (8.20%)","80903":"Colorado Springs (8.20%)","80904":"Colorado Springs (8.20%)","80905":"Colorado Springs (8.20%)","80906":"Colorado Springs (8.20%)","80907":"Colorado Springs (8.20%)","80908":"Colorado Springs (8.20%)","80909":"Colorado Springs (8.20%)","80910":"Colorado Springs (8.20%)","80911":"Colorado Springs (8.20%)","80912":"Colorado Springs (8.20%)","80913":"Colorado Springs (8.20%)","80914":"Colorado Springs (8.20%)","80915":"Colorado Springs (8.20%)","80916":"Colorado Springs (8.20%)","80917":"Colorado Springs (8.20%)","80918":"Colorado Springs (8.20%)","80919":"Colorado Springs (8.20%)","80920":"Colorado Springs (8.20%)","80921":"Colorado Springs (8.20%)","80922":"Colorado Springs (8.20%)","80923":"Colorado Springs (8.20%)","80924":"Colorado Springs (8.20%)","80925":"Colorado Springs (8.20%)","80926":"Colorado Springs (8.20%)","80927":"Colorado Springs (8.20%)","80928":"Colorado Springs (8.20%)","80929":"Colorado Springs (8.20%)","80930":"Colorado Springs (8.20%)","80938":"Colorado Springs (8.20%)","80939":"Colorado Springs (8.20%)","80951":"Colorado Springs (8.20%)","81001":"Pueblo (7.60%)","81002":"Pueblo (7.60%)","81003":"Pueblo (7.60%)","81004":"Pueblo (7.60%)","81005":"Pueblo (7.60%)","81006":"Pueblo (7.60%)","81007":"Pueblo West (5.90%)","81008":"Pueblo (7.60%)","81009":"Pueblo (7.60%)","81010":"Pueblo (7.60%)","81011":"Pueblo (7.60%)","81012":"Pueblo (7.60%)","81020":"Aguilar (7.40%)","81025":"Boone (3.90%)","81027":"Branson (4.40%)","81030":"Cheraw (3.90%)","81033":"Crowley (4.90%)","81036":"Eads (4.90%)","81039":"Fowler (6.90%)","81041":"Granada (5.90%)","81042":"Hartman (3.90%)","81045":"Haswell (2.90%)","81047":"Holly (7.90%)","81049":"Kim (4.40%)","81050":"La Junta (8.90%)","81052":"Lamar (6.90%)","81054":"Las Animas (7.90%)","81055":"La Veta (9.90%)","81058":"Manzanola (5.90%)","81062":"Olney Springs (4.90%)","81063":"Ordway (6.90%)","81064":"Pritchett (2.90%)","81067":"Rocky Ford (7.90%)","81069":"Rye (3.90%)","81071":"Sheridan Lake (2.90%)","81073":"Springfield (4.90%)","81076":"Sugar City (4.90%)","81077":"Swink (3.90%)","81082":"Trinidad (8.40%)","81087":"Vilas (2.90%)","81089":"Walsenburg (8.90%)","81090":"Walsh (5.90%)","81092":"Wiley (5.90%)","81101":"Alamosa (8.40%)","81102":"Alamosa (8.40%)","81120":"Antonito (8.90%)","81122":"Bayfield (8.90%)","81123":"Blanca (7.90%)","81125":"Center (9.50%)","81130":"Creede (9.50%)","81131":"Crestone (8.90%)","81132":"Del Norte (7.50%)","81136":"Hooper (7.90%)","81137":"Ignacio (8.90%)","81140":"La Jara (7.90%)","81141":"Manassa (5.90%)","81143":"Moffat (7.40%)","81144":"Monte Vista (8.50%)","81147":"Pagosa Springs (7.90%)","81148":"Romeo (8.80%)","81149":"Saguache (9.40%)","81151":"Sanford (4.90%)","81152":"San Luis (7.90%)","81154":"South Fork (9.50%)","81201":"Salida (8.65%)","81211":"Buena Vista (8.15%)","81212":"Canon City (8.70%)","81215":"Canon City (8.70%)","81224":"Crested Butte (9.40%)","81225":"Mt Crested Butte (9.90%)","81226":"Florence (7.90%)","81230":"Gunnison (8.90%)","81233":"Brookside (5.40%)","81235":"Lake City (9.15%)","81241":"Pitkin (6.90%)","81242":"Poncha Springs (7.65%)","81244":"Rockvale (5.40%)","81252":"Westcliffe (7.90%)","81301":"Durango (9.40%)","81302":"Durango (9.40%)","81303":"Durango (9.40%)","81321":"Cortez (7.69%)","81323":"Dolores (7.30%)","81324":"Dove Creek (8.00%)","81328":"Mancos (7.30%)","81332":"Rico (8.97%)","81401":"Montrose (8.53%)","81402":"Montrose (8.53%)","81403":"Montrose (8.53%)","81410":"Orchard City (6.50%)","81413":"Cedaredge (8.50%)","81415":"Crawford (8.50%)","81416":"Delta (9.50%)","81419":"Hotchkiss (8.50%)","81422":"Naturita (8.65%)","81423":"Norwood (6.90%)","81424":"Nucla (8.65%)","81425":"Olathe (8.65%)","81426":"Ophir (5.90%)","81427":"Ouray (9.45%)","81428":"Paonia (9.50%)","81432":"Ridgway (9.05%)","81433":"Silverton (10.40%)","81434":"Somerset (3.90%)","81435":"Telluride (9.47%)","81501":"Grand Junction (8.66%)","81502":"Grand Junction (8.66%)","81503":"Grand Junction (8.66%)","81504":"Grand Junction (8.66%)","81505":"Grand Junction (8.66%)","81506":"Grand Junction (8.66%)","81507":"Grand Junction (8.66%)","81520":"Clifton (5.27%)","81521":"Fruita (8.27%)","81526":"Palisade (7.27%)","81601":"Glenwood Springs (9.35%)","81602":"Glenwood Springs (9.35%)","81610":"Dinosaur (7.00%)","81611":"Aspen (10.35%)","81612":"Aspen (10.35%)","81615":"Snowmass Village (10.65%)","81620":"Avon (9.69%)","81621":"Basalt (8.45%)","81623":"Marble (9.40%)","81624":"Collbran (7.27%)","81625":"Craig (8.90%)","81630":"De Beque (7.27%)","81631":"Eagle (9.40%)","81635":"Parachute (7.90%)","81637":"Gypsum (7.40%)","81639":"Hayden (8.90%)","81641":"Meeker (6.50%)","81645":"Minturn (9.69%)","81647":"New Castle (8.45%)","81648":"Rangely (6.50%)","81649":"Red Cliff (8.69%)","81650":"Rifle (8.40%)","81652":"Silt (7.15%)","81657":"Vail (9.40%)","81658":"Vail (9.40%)"},
     calculate:(deal)=>{
-      const {msrp,modelYear,weight,county}=deal;
+      const {msrp,modelYear,weight,county,vehicleType}=deal;
       const age=new Date().getFullYear()-parseInt(modelYear);
-      const tv=parseFloat(msrp)*0.85;
-      // SOT rates — Class C (cars/SUVs): verified Mar 2026 from dmv.colorado.gov
-      const sotRate=age<=1?0.021:age<=2?0.015:age<=3?0.012:age<=4?0.009:age<=9?0.0045:null;
-      const owt=sotRate!==null?Math.max(3.00,tv*sotRate):3.00;
+      // SOT base: 85% MSRP for cars/SUVs, 75% MSRP for light trucks (dmv.colorado.gov)
+      const tv=parseFloat(msrp)*(vehicleType==="truck"?0.75:0.85);
+      // SOT rates — verified Mar 2026 from dmv.colorado.gov
+      // age=0→Yr1(2.10%), age=1→Yr2(1.50%), age=2→Yr3(1.20%), age=3→Yr4(0.90%), age=4–8→Yrs5-9(0.45%), age=9+→$3 flat
+      const sotRate=age===0?0.021:age===1?0.015:age===2?0.012:age===3?0.009:age<=8?0.0045:null;
+      const owt=sotRate===null?3.00:tv*sotRate;
       const w=parseInt(weight)||3500;
-      // Base reg: $6 + $0.60 per 100 lbs over 2000 lbs (CRS 42-3-306)
-      const base=+(6+(Math.max(0,w-2000)/100*0.60)).toFixed(2);
       // FASTER Road Safety Surcharge (Sept 2025–Aug 2027 rates — dmv.colorado.gov)
       const rs=w<=2000?12.30:w<=5000?19.30:w<=10000?24.30:33.30;
       // FASTER Bridge Safety Surcharge (dmv.colorado.gov)
       const bridge=w<=2000?13:w<=5000?18:w<=10000?23:29;
       // Age-based plate tab fee (CO DMV fact sheet: <7=$9, 7-9=$7, 10+=$5)
       const plateFee=age<7?9:age<10?7:5;
-      // County sales tax — verified Mar 2026
-      const coRates={"Denver":0.0915,"El Paso":0.062,"Arapahoe":0.0675,"Jefferson":0.065,"Adams":0.0675,"Boulder":0.08845,"Larimer":0.0655,"Weld":0.059};
-      const countyKey=Object.keys(coRates).find(k=>county&&county.includes(k))||null;
-      const salesTaxRate=countyKey?coRates[countyKey]:0.059;
+      // Exact city-level sales tax — Jan–Jun 2026 (CO Dept of Revenue)
+      // Rate is embedded in dropdown value as "City Name (X.XX%)"
+      const rateMatch=county&&county.match(/\((\d+\.?\d*)%\)/);
+      const salesTaxRate=rateMatch?parseFloat(rateMatch[1])/100:0.029;
+      const cityName=county?county.replace(/\s*\([\d.]+%\)$/,""):null;
       const taxBase=taxableBase("CO",deal);
       const salesTax=taxBase>0?taxBase*salesTaxRate:0;
       return[
-        {label:"Specific Ownership Tax (SOT)",amount:+owt.toFixed(2),note:"Tax-deductible on federal return — decreases each year. 85% MSRP × age rate."},
-        {label:"Base Registration Fee (weight-based)",amount:base,note:"$6 + $0.60/100 lbs over 2,000 lbs"},
+        {label:"Specific Ownership Tax (SOT)",amount:+owt.toFixed(2),note:`Tax-deductible on federal return. ${vehicleType==="truck"?"Light trucks: 75%":"Cars/SUVs: 85%"} of MSRP × age rate. Yr1=2.10% / Yr2=1.50% / Yr3=1.20% / Yr4=0.90% / Yrs5-9=0.45% / Yr10+=$3 flat.`},
         {label:"Road Safety Fee (FASTER)",amount:rs,note:"Sept 2025–Aug 2027 rates. Increases Sept 2027."},
         {label:"Bridge Safety Fee (FASTER)",amount:bridge,note:"Weight-tiered — ≤5,000=$18 / ≤10,000=$23 / >10,000=$29"},
         {label:"Plate Tab Fee (age-based)",amount:plateFee,note:"<7 yrs=$9 / 7–9 yrs=$7 / 10+ yrs=$5"},
         {label:"Clerk Hire Fee",amount:4.00},
+        {label:"Air Quality / Emissions Fee",amount:2.70,note:"Environmental program surcharge"},
         {label:"Emergency Medical Services Fee",amount:2.00},
         {label:"Insurance Database Fee (MIIDB)",amount:0.60,note:"$0.50 insurance + $0.10 MIIDB"},
         {label:"POST Fee",amount:1.00,note:"Peace Officer Standards & Training"},
-        {label:"County Road & Bridge Fee",amount:0.94},
-        ...(salesTax>0?[{label:`Sales Tax (~${(salesTaxRate*100).toFixed(2)}% — ${countyKey||"CO"} County)`,amount:+salesTax.toFixed(2),note:"State 2.9% + county + city. Verify exact rate with county.",isTax:true}]:[]),
+        ...(salesTax>0?[{label:`Sales Tax (${(salesTaxRate*100).toFixed(2)}% — ${cityName||"CO"})`,amount:+salesTax.toFixed(2),note:"Exact Jan–Jun 2026 rate from CO Dept of Revenue. State 2.9% + county + city.",isTax:true}]:[]),
       ];
     },
-    notes:"SOT is the largest cost and decreases annually — tax-deductible on federal return. FASTER fees updated Sept 2025 and increase again Sept 2027. Sales tax varies widely: Denver 9.15%, Boulder 8.85%, most rural counties ~5.9%. Rates verified Mar 2026 from dmv.colorado.gov.",
+    notes:"SOT is the largest cost and decreases annually — tax-deductible on federal return. Cars/SUVs use 85% of MSRP; light trucks use 75%. Rates: Yr1=2.10%, Yr2=1.50%, Yr3=1.20%, Yr4=0.90%, Yrs5-9=0.45%, Yr10+=$3 flat. FASTER fees updated Sept 2025 and increase again Sept 2027. City-level sales tax rates from CO Dept of Revenue — valid Jan–Jun 2026. Rates range from 2.90% (rural) to 11.20% (Winter Park). Update Jul 2026.",
   },
   WY:{
     name:"Wyoming",lastVerified:"Mar 2026",
-    salesTaxNote:"4% state + up to 3% county option tax. Rates vary by county referendum.",
+    salesTaxNote:"4% state + county option tax. All 23 counties covered — rates verified WY DOR.",
     salesTaxUpdateFreq:"Annual (county option taxes can change via voter referendum)",
-    inputs:["year","msrp","county"],
-    counties:["Teton / Jackson (7%)","Laramie / Cheyenne (6%)","Natrona / Casper (6%)","Sweetwater / Rock Springs (6%)","Albany / Laramie-UW (6%)","Sheridan (6%)","Campbell / Gillette (5%)","Fremont / Riverton (5%)","Other (5%)"],
+    inputs:["year","msrp","county","vehicleType","weight"],
+    counties:["Albany (6%)","Big Horn (5%)","Campbell (5%)","Carbon (6%)","Converse (5%)","Crook (5%)","Fremont (5%)","Goshen (5.25%)","Hot Springs (6%)","Johnson (5%)","Laramie (6%)","Lincoln (5%)","Natrona (5%)","Niobrara (6%)","Park (4%)","Platte (6%)","Sheridan (6%)","Sublette (4%)","Sweetwater (6%)","Teton (7%)","Uinta (5%)","Washakie (5%)","Weston (5%)"],
+    zipMap:{"82051":"Albany (6%)","82052":"Albany (6%)","82055":"Albany (6%)","82058":"Albany (6%)","82063":"Albany (6%)","82070":"Albany (6%)","82071":"Albany (6%)","82072":"Albany (6%)","82073":"Albany (6%)","82083":"Albany (6%)","82084":"Albany (6%)","82410":"Big Horn (5%)","82411":"Big Horn (5%)","82412":"Big Horn (5%)","82420":"Big Horn (5%)","82421":"Big Horn (5%)","82426":"Big Horn (5%)","82431":"Big Horn (5%)","82432":"Big Horn (5%)","82716":"Campbell (5%)","82717":"Campbell (5%)","82718":"Campbell (5%)","82727":"Campbell (5%)","82732":"Campbell (5%)","82301":"Carbon (6%)","82310":"Carbon (6%)","82321":"Carbon (6%)","82322":"Carbon (6%)","82323":"Carbon (6%)","82324":"Carbon (6%)","82325":"Carbon (6%)","82327":"Carbon (6%)","82329":"Carbon (6%)","82331":"Carbon (6%)","82332":"Carbon (6%)","82334":"Carbon (6%)","82335":"Carbon (6%)","82336":"Carbon (6%)","82229":"Converse (5%)","82631":"Converse (5%)","82633":"Converse (5%)","82637":"Converse (5%)","82710":"Crook (5%)","82711":"Crook (5%)","82712":"Crook (5%)","82713":"Crook (5%)","82714":"Crook (5%)","82715":"Crook (5%)","82720":"Crook (5%)","82721":"Crook (5%)","82723":"Crook (5%)","82729":"Crook (5%)","82731":"Crook (5%)","82501":"Fremont (5%)","82510":"Fremont (5%)","82512":"Fremont (5%)","82513":"Fremont (5%)","82514":"Fremont (5%)","82515":"Fremont (5%)","82516":"Fremont (5%)","82520":"Fremont (5%)","82523":"Fremont (5%)","82642":"Fremont (5%)","82649":"Fremont (5%)","82212":"Goshen (5.25%)","82217":"Goshen (5.25%)","82218":"Goshen (5.25%)","82219":"Goshen (5.25%)","82221":"Goshen (5.25%)","82223":"Goshen (5.25%)","82240":"Goshen (5.25%)","82243":"Goshen (5.25%)","82244":"Goshen (5.25%)","82443":"Hot Springs (6%)","82639":"Johnson (5%)","82834":"Johnson (5%)","82001":"Laramie (6%)","82002":"Laramie (6%)","82003":"Laramie (6%)","82005":"Laramie (6%)","82006":"Laramie (6%)","82007":"Laramie (6%)","82008":"Laramie (6%)","82009":"Laramie (6%)","82010":"Laramie (6%)","82050":"Laramie (6%)","82053":"Laramie (6%)","82054":"Laramie (6%)","82059":"Laramie (6%)","82060":"Laramie (6%)","82061":"Laramie (6%)","82081":"Laramie (6%)","82082":"Laramie (6%)","83101":"Lincoln (5%)","83110":"Lincoln (5%)","83111":"Lincoln (5%)","83112":"Lincoln (5%)","83114":"Lincoln (5%)","83116":"Lincoln (5%)","83118":"Lincoln (5%)","83119":"Lincoln (5%)","83120":"Lincoln (5%)","83122":"Lincoln (5%)","83123":"Lincoln (5%)","83124":"Lincoln (5%)","83126":"Lincoln (5%)","83127":"Lincoln (5%)","83128":"Lincoln (5%)","82601":"Natrona (5%)","82602":"Natrona (5%)","82604":"Natrona (5%)","82605":"Natrona (5%)","82609":"Natrona (5%)","82615":"Natrona (5%)","82620":"Natrona (5%)","82630":"Natrona (5%)","82636":"Natrona (5%)","82644":"Natrona (5%)","82646":"Natrona (5%)","82648":"Natrona (5%)","82222":"Niobrara (6%)","82225":"Niobrara (6%)","82227":"Niobrara (6%)","82190":"Park (4%)","82414":"Park (4%)","82433":"Park (4%)","82435":"Park (4%)","82440":"Park (4%)","82201":"Platte (6%)","82210":"Platte (6%)","82213":"Platte (6%)","82214":"Platte (6%)","82215":"Platte (6%)","82801":"Sheridan (6%)","82831":"Sheridan (6%)","82832":"Sheridan (6%)","82833":"Sheridan (6%)","82835":"Sheridan (6%)","82836":"Sheridan (6%)","82838":"Sheridan (6%)","82839":"Sheridan (6%)","82842":"Sheridan (6%)","82844":"Sheridan (6%)","82922":"Sublette (4%)","82923":"Sublette (4%)","82925":"Sublette (4%)","82941":"Sublette (4%)","83113":"Sublette (4%)","83115":"Sublette (4%)","82901":"Sweetwater (6%)","82902":"Sweetwater (6%)","82932":"Sweetwater (6%)","82934":"Sweetwater (6%)","82935":"Sweetwater (6%)","82938":"Sweetwater (6%)","82945":"Sweetwater (6%)","83001":"Teton (7%)","83002":"Teton (7%)","83011":"Teton (7%)","83012":"Teton (7%)","83013":"Teton (7%)","83014":"Teton (7%)","83025":"Teton (7%)","83414":"Teton (7%)","82930":"Uinta (5%)","82931":"Uinta (5%)","82933":"Uinta (5%)","82936":"Uinta (5%)","82937":"Uinta (5%)","82939":"Uinta (5%)","82944":"Uinta (5%)","82401":"Washakie (5%)","82442":"Washakie (5%)","82701":"Weston (5%)","82730":"Weston (5%)"},
     calculate:(deal)=>{
-      const {modelYear,msrp,county}=deal;
+      const {modelYear,msrp,county,vehicleType,weight}=deal;
       const yr=new Date().getFullYear();
       const age=yr-parseInt(modelYear); // 0=current year, 1=1yr old, etc.
+      // State registration fee (W.S. 31-3-101)
+      // Cars: flat $30. Trucks: weight-tiered.
+      const w=parseInt(weight)||3500;
+      const stateFee=vehicleType==="truck"
+        ?(w<=3500?30:w<=4500?40:w<=5500?50:w<=6000?70:90)
+        :30;
       // County fee: MSRP × depreciation factor × 3% (W.S. 31-3-101)
       // Depreciation by year of service (age+1): yr1=60%, yr2=52%, yr3=45%, yr4=37%, yr5=30%, yr6+=15%
       const depFactors=[0.60,0.52,0.45,0.37,0.30,0.15];
       const dep=depFactors[Math.min(age,depFactors.length-1)];
       const countyFee=(parseFloat(msrp)||0)*dep*0.03;
-      // Sales tax rates by county (2025/2026 — verified via official Teton Co. site & WY DOR data)
-      const wyRates={"Teton":0.07,"Laramie":0.06,"Natrona":0.06,"Sweetwater":0.06,"Albany":0.06,"Sheridan":0.06,"Campbell":0.05,"Fremont":0.05};
-      const countyKey=Object.keys(wyRates).find(k=>county&&county.includes(k))||null;
-      const salesTaxRate=countyKey?wyRates[countyKey]:0.05;
+      // Exact county sales tax — parsed from dropdown "County (X%)"
+      const rateMatch=county&&county.match(/\((\d+\.?\d*)%\)/);
+      const salesTaxRate=rateMatch?parseFloat(rateMatch[1])/100:0.04;
+      const countyName=county?county.replace(/\s*\([\d.]+%\)$/,""):null;
       const taxBase=taxableBase("WY",deal);
       const salesTax=taxBase>0?taxBase*salesTaxRate:0;
+      const rateStr=(salesTaxRate*100).toFixed(2).replace(/\.?0+$/,"");
       return[
-        {label:"State Registration Fee",amount:30.00,note:"Flat $30/yr for passenger vehicles — W.S. 31-3-101"},
+        {label:"State Registration Fee",amount:stateFee,note:vehicleType==="truck"?"Truck weight-tiered: ≤3,500 lbs=$30 / ≤4,500=$40 / ≤5,500=$50 / ≤6,000=$70 / 6,001+=$90 — W.S. 31-3-101":"Flat $30/yr for passenger cars — W.S. 31-3-101"},
         {label:`County Fee (${(dep*100).toFixed(0)}% dep × 3% of MSRP)`,amount:+countyFee.toFixed(2),note:`Factory price × ${(dep*100).toFixed(0)}% depreciation × 3%. Yr1=60%, Yr2=52%, Yr3=45%, Yr4=37%, Yr5=30%, Yr6+=15% (floor). This is an ad valorem property tax — may be federally deductible.`},
         {label:"License Plate Fee",amount:7.50,note:"One-time fee for new plate issuance"},
         {label:"Title Fee",amount:15.00},
-        ...(salesTax>0?[{label:`Sales/Use Tax (${(salesTaxRate*100).toFixed(0)}% — ${countyKey||"WY"} Co.)`,amount:+salesTax.toFixed(2),note:"4% state + county option tax. Teton is highest at 7% (4%+1%+2%). Collected at time of first WY registration.",isTax:true}]:[]),
+        ...(salesTax>0?[{label:`Sales/Use Tax (${rateStr}% — ${countyName||"WY"} Co.)`,amount:+salesTax.toFixed(2),note:"4% state + county option tax. Teton highest at 7%; Park & Sublette lowest at 4%. Collected at time of first WY registration.",isTax:true}]:[]),
       ];
     },
-    notes:"WY registration has two parts: flat $30 state fee + value-based county fee (MSRP × depreciation × 3%). On a $40K new car that's ~$750 yr1, dropping to ~$210 by yr6+. Electric vehicles: $200/yr additional EV decal fee (W.S. 39-17-301). No emissions testing required.",
+    notes:"WY registration has two parts: state fee + value-based county fee (MSRP × depreciation × 3%). Cars pay a flat $30 state fee. Trucks are weight-tiered: ≤3,500=$30 / ≤4,500=$40 / ≤5,500=$50 / ≤6,000=$70 / 6,001+=$90. On a $40K new car the county fee is ~$720 yr1, dropping to ~$180 by yr6+. Electric vehicles: $200/yr additional EV decal fee (W.S. 39-17-301). No emissions testing required. Sales tax: all 23 counties covered — Teton 7%, Carbon/Laramie/Sheridan/Sweetwater/Albany/Hot Springs/Niobrara/Platte 6%, Goshen 5.25%, most others 5%, Park & Sublette 4%.",
   },
   MT:{
     name:"Montana",lastVerified:"Mar 2026",
     salesTaxNote:"Montana has NO state sales tax.",
     salesTaxUpdateFreq:"N/A — no sales tax",
-    inputs:["year"],
-    calculate:({modelYear})=>{
+    inputs:["year","msrp","vehicleClass"],
+    vehicleClasses:[["automobile","Automobile"],["truck","Truck"],["van","Van"],["suv","SUV"]],
+    calculate:(deal)=>{
+      const {modelYear,msrp,vehicleClass}=deal;
       const age=new Date().getFullYear()-parseInt(modelYear);
-      const fee=age<=4?217:age<=10?87:28;
+      // Registration fee — § 61-3-321(2)(d) MCA
+      const regFee=age<=4?217:age<=10?87:28;
+      // 3% Administrative Fee on registration rate
+      const adminFee=+(regFee*0.03).toFixed(2);
+      // County Option Tax depreciation schedules — § 61-3-503 MCA
+      // Arrays indexed by (age+1): index 0 = age -1 (pre-model-year purchase), index 1 = age 0, etc.
+      const depTables={
+        automobile:[1.00,0.90,0.80,0.69,0.58,0.49,0.41,0.33,0.26,0.21,0.17,0.14,0.12,0.10,0.09,0.09,0.09,0.09],
+        truck:     [1.00,0.96,0.91,0.86,0.80,0.73,0.66,0.57,0.49,0.43,0.37,0.31,0.26,0.22,0.18,0.15,0.13,0.12],
+        van:       [1.00,0.93,0.86,0.78,0.69,0.60,0.52,0.45,0.38,0.32,0.27,0.22,0.18,0.15,0.13,0.11,0.09,0.09],
+        suv:       [1.00,0.98,0.94,0.90,0.84,0.76,0.67,0.57,0.48,0.39,0.33,0.29,0.25,0.22,0.21,0.19,0.17,0.09],
+      };
+      const table=depTables[vehicleClass]||depTables.automobile;
+      const idx=Math.min(Math.max(age+1,0),table.length-1);
+      const dep=table[idx];
+      const msrpVal=parseFloat(msrp)||0;
+      // County option tax rate varies by county (~0.5% typical — verify with county)
+      const countyTaxRate=0.005;
+      const countyTax=+(msrpVal*dep*countyTaxRate).toFixed(2);
       return[
-        {label:"Registration Fee (age-based)",amount:fee,note:"0–4 yrs: $217 / 5–10 yrs: $87 / 11+ yrs: $28 — MT MVD fee schedule"},
+        {label:"Registration Fee (age-based)",amount:regFee,note:"0–4 yrs: $217 / 5–10 yrs: $87 / 11+ yrs: $28 — § 61-3-321(2)(d) MCA"},
+        {label:"Registration Admin Fee (3%)",amount:adminFee,note:"3% of registration rate — § 61-3-321 MCA"},
+        ...(msrpVal>0?[{label:`County Option Tax (${(dep*100).toFixed(0)}% dep × 0.5%)`,amount:countyTax,note:`MSRP × ${(dep*100).toFixed(0)}% depreciation (${vehicleClass}) × ~0.5% county rate. Rate varies by county — verify locally. — § 61-3-503 MCA`}]:[]),
         {label:"Title Fee",amount:12.00},
         {label:"MHP Salary & Retention Fee",amount:10.00},
       ];
     },
-    notes:"Montana has NO sales tax — a significant advantage for high-value vehicle purchases. Age-based registration: $217 (0–4 yrs), $87 (5–10 yrs), $28 (11+ yrs). Permanent registration for 11+ yr vehicles: $87.50 one-time. County option tax (0.5% of depreciated MSRP) applies in 45 of 56 counties — not included above, verify with county. Fees verified Mar 2026 — source: mvdmt.gov.",
+    notes:"Montana has NO sales tax. Registration: $217 (0–4 yrs) / $87 (5–10 yrs) / $28 (11+ yrs) + 3% admin fee. County option tax is based on MSRP × vehicle-class depreciation schedule × county rate (~0.5% — verify with your county). Trucks and SUVs depreciate slower than automobiles. Permanent registration available for vehicles 11+ yrs: $87.50 one-time. Rates verified Mar 2026 — source: mvdmt.gov.",
   },
   WA:{
     name:"Washington",lastVerified:"Mar 2026",
-    salesTaxNote:"6.5% state + local. Rates from official WA DOR Q1 2026 MVET table. Updated quarterly.",
+    salesTaxNote:"6.5% state + 0.5% MVET + local. Q1 2026 rates (effective Jan 1, 2026). Updated quarterly.",
     salesTaxUpdateFreq:"Quarterly (WA Dept of Revenue — dor.wa.gov)",
     inputs:["msrp","year","weight","county","inRTA"],
-    counties:["King / Seattle area (~10.30%)","Pierce / Tacoma (~10.30%)","Snohomish / Edmonds-Lynnwood (~10.50%)","Spokane (~8.90%)","Clark / Vancouver (~8.70%)","Thurston / Olympia (~9.50%)","Whatcom / Bellingham (~8.80%)","Benton / Tri-Cities (~8.50%)","Other / Rural (~7.80%)"],
+    counties:["Adams (~8.90%)","Asotin (~8.60%)","Benton (~9.00%)","Chelan (~9.30%)","Clallam (~9.40%)","Clark (~9.20%)","Columbia (~8.90%)","Cowlitz (~8.60%)","Douglas (~9.20%)","Ferry (~8.20%)","Franklin (~9.10%)","Garfield (~8.60%)","Grant (~8.70%)","Grays Harbor (~9.30%)","Island (~9.70%)","Jefferson (~9.60%)","King (~11.05%)","Kitsap (~9.80%)","Kittitas (~8.80%)","Klickitat (~8.20%)","Lewis (~8.90%)","Lincoln (~8.20%)","Mason (~9.30%)","Okanogan (~9.10%)","Pacific (~8.90%)","Pend Oreille (~8.20%)","Pierce (~10.80%)","San Juan (~8.85%)","Skagit (~9.00%)","Skamania (~8.50%)","Snohomish (~11.10%)","Spokane (~9.60%)","Stevens (~8.20%)","Thurston (~10.00%)","Wahkiakum (~8.30%)","Walla Walla (~9.30%)","Whatcom (~9.40%)","Whitman (~8.50%)","Yakima (~8.70%)"],
     calculate:(deal)=>{
       const {msrp,modelYear,weight,county,inRTA}=deal;
       const yos=new Date().getFullYear()-parseInt(modelYear)+1;
       const w=parseInt(weight)||3500;
-      // Weight fees per SB5801 (2025 c 417), effective Jan 1, 2026 — RCW 46.17.355
+      // Weight fees — RCW 46.17.365 (2026). $10 add'l weight fee folded into base tiers Jan 2026.
       const wfBase=w<=4000?35:w<=6000?65:w<=8000?82.50:96;
-      // Additional $10 weight fee for all vehicles ≤12,000 lbs — RCW 46.17.355(7)
-      const wfAdd=w<=12000?10:0;
+      // RTA depreciation schedule — WA DOL (verify at dol.wa.gov if rates change)
       const dep=[1.0,0.85,0.725,0.625,0.525,0.45,0.38,0.32,0.27,0.22,0.18,0.14,0.10];
       const rta=inRTA==="yes"?parseFloat(msrp)*dep[Math.min(yos-1,dep.length-1)]*0.011:0;
-      // Sales tax rates from WA DOR Q1 2026 MVET official rate table
-      const waRates={"King":0.1030,"Pierce":0.1030,"Snohomish":0.1050,"Spokane":0.0890,"Clark":0.0870,"Thurston":0.0950,"Whatcom":0.0880,"Benton":0.0850};
+      // Sales tax rates from WA DOR Q1 2026 motor vehicle rate table (effective Jan 1, 2026)
+      const waRates={"Adams":0.0890,"Asotin":0.0860,"Benton":0.0900,"Chelan":0.0930,"Clallam":0.0940,"Clark":0.0920,"Columbia":0.0890,"Cowlitz":0.0860,"Douglas":0.0920,"Ferry":0.0820,"Franklin":0.0910,"Garfield":0.0860,"Grant":0.0870,"Grays Harbor":0.0930,"Island":0.0970,"Jefferson":0.0960,"King":0.1105,"Kitsap":0.0980,"Kittitas":0.0880,"Klickitat":0.0820,"Lewis":0.0890,"Lincoln":0.0820,"Mason":0.0930,"Okanogan":0.0910,"Pacific":0.0890,"Pend Oreille":0.0820,"Pierce":0.1080,"San Juan":0.0885,"Skagit":0.0900,"Skamania":0.0850,"Snohomish":0.1110,"Spokane":0.0960,"Stevens":0.0820,"Thurston":0.1000,"Wahkiakum":0.0830,"Walla Walla":0.0930,"Whatcom":0.0940,"Whitman":0.0850,"Yakima":0.0870};
       const countyKey=Object.keys(waRates).find(k=>county&&county.includes(k))||null;
-      const salesTaxRate=countyKey?waRates[countyKey]:0.078;
+      const salesTaxRate=countyKey?waRates[countyKey]:0.065;
       const taxBase=taxableBase("WA",deal);
       const salesTax=taxBase>0?taxBase*salesTaxRate:0;
+      // MVET 0.5% of MSRP (increased from 0.3% Jan 1, 2026 — RCW 82.08.020)
       const mvet=(parseFloat(msrp)||0)*0.005;
+      // Luxury Vehicle Tax — 8% on purchase price exceeding $100,000 (NEW Jan 1, 2026)
+      // Trade-in does NOT reduce luxury tax base — WAC 458-20-247
+      const rawPrice=parseFloat(deal.purchasePrice)||parseFloat(msrp)||0;
+      const luxuryTax=rawPrice>100000?+(( rawPrice-100000)*0.08).toFixed(2):0;
       return[
-        {label:"Base Registration Fee",amount:43.25},
-        {label:"Filing Fee",amount:6.00,note:"Increased from $4.50 — SB5801, effective Jan 1, 2026"},
-        {label:"Service Fee",amount:11.00,note:"Increased from $8.00 — SB5801, effective Jan 1, 2026"},
-        {label:"Weight Fee",amount:wfBase,note:`Based on vehicle weight: ≤4,000 lbs=$35 / ≤6,000=$65 / ≤8,000=$82.50 / 8,000+=$96 (2026 rates per SB5801)`},
-        {label:"Additional Weight Fee",amount:wfAdd,note:"$10 flat for all vehicles ≤12,000 lbs — RCW 46.17.355(7)"},
-        {label:"Motor Vehicle Excise Tax (0.50%)",amount:+mvet.toFixed(2),note:"0.5% of MSRP — increased from 0.3% per SB5801, Jan 2026",isTax:true},
-        ...(rta>0?[{label:"RTA Excise Tax (1.1% of depreciated value)",amount:+rta.toFixed(2),note:"Sound Transit District (King/Pierce/Snohomish) only. Annual recurring fee. May be federal tax deductible.",isTax:true}]:[]),
-        {label:"Title Fee",amount:18.00,note:"Certificate of title application fee — RCW 46.17.100"},
-        ...(salesTax>0?[{label:`Sales/Use Tax (~${(salesTaxRate*100).toFixed(2)}% — ${countyKey||"Rural"} Co.)`,amount:+salesTax.toFixed(2),note:"6.5% state + local. Rates from WA DOR Q1 2026 MVET table. Verify exact rate at dor.wa.gov/TaxRateLookup.",isTax:true}]:[]),
+        {label:"License Tab Fee",amount:30.00,note:"Annual flat license tab — RCW 46.17.365"},
+        {label:"Filing Fee",amount:6.00,note:"Registration filing fee — RCW 46.17.100 (updated Jan 2026)"},
+        {label:"Service Fee",amount:11.00,note:"Registration service fee — RCW 46.17.100 (updated Jan 2026)"},
+        {label:"Plate Reflectivity Fee",amount:2.00,note:"Required for all plate issuances — RCW 46.17.315"},
+        {label:"Weight Fee",amount:wfBase,note:`Based on vehicle weight: ≤4,000 lbs=$35 / ≤6,000=$65 / ≤8,000=$82.50 / 8,001+=$96 — RCW 46.17.365 (2026; $10 add'l fee folded into base)`},
+        {label:"Motor Vehicle Excise Tax (0.50%)",amount:+mvet.toFixed(2),note:"0.5% of MSRP — increased from 0.3% per RCW 82.08.020, Jan 2026",isTax:true},
+        ...(rta>0?[{label:"RTA Excise Tax (1.1% of depreciated value)",amount:+rta.toFixed(2),note:"Sound Transit District (King/Pierce/Snohomish) only. Annual recurring fee. Federally tax deductible — RCW 82.80.020.",isTax:true}]:[]),
+        {label:"Title Fee",amount:40.50,note:"$16.00 base + $6.50 filing + $18.00 service — RCW 46.17.100 (updated Jan 2026)"},
+        ...(luxuryTax>0?[{label:`Luxury Vehicle Tax (8% on amount over $100k)`,amount:luxuryTax,note:"8% on portion of purchase price exceeding $100,000. Trade-in does NOT reduce this base. Threshold increases 2% annually on July 1. — RCW 82.08.020",isTax:true}]:[]),
+        ...(salesTax>0?[{label:`Sales/Use Tax (~${(salesTaxRate*100).toFixed(2)}% — ${countyKey||"Rural"} Co.)`,amount:+salesTax.toFixed(2),note:"6.5% state + local. Q1 2026 rates effective Jan 1, 2026. Verify exact rate at dor.wa.gov/TaxRateLookup.",isTax:true}]:[]),
       ];
     },
-    notes:"One of the most complex and expensive states. All DMV fees updated Jan 1, 2026 per SB5801. RTA tax in King/Pierce/Snohomish adds $150–$500/yr depending on MSRP and age. Sales tax rates change quarterly — always verify at dor.wa.gov. Seattle area combined rates exceed 10.5%.",
+    notes:"WA fees updated Jan 2026. Title fee is $40.50 ($16+$6.50+$18). RTA tax in King/Pierce/Snohomish adds $150–$500+/yr depending on MSRP and age — federally deductible. NEW Jan 2026: Luxury Vehicle Tax adds 8% on purchase price above $100k (trade-in does not reduce). EV owners pay $225/yr extra; plug-in hybrids $75/yr extra (RCW 46.17.323). Sales tax changes quarterly — verify at dor.wa.gov. Next fee update due July 2026 (luxury threshold increases 2% annually).",
   },
   ID:{
     name:"Idaho",lastVerified:"Mar 2026",
@@ -378,14 +415,15 @@ const STATE_DATA = {
       const taxBase=taxableBase("ID",deal);
       const salesTax=taxBase>0?taxBase*0.06:0;
       return[
-        {label:"Registration Fee (annual)",amount:age<=2?69:age<=6?57:45,note:"1–2 yrs: $69 / 3–6 yrs: $57 / 7+ yrs: $45 — per ITD fee schedule"},
+        {label:"Registration Fee (annual)",amount:age<=2?69:age<=6?57:45,note:"1–2 yrs: $69 / 3–6 yrs: $57 / 7+ yrs: $45 — Idaho Code § 49-402 (last changed July 2025). Optional 2-year renewal available; fees double if selected."},
+        {label:"Plate Fee",amount:3.00,note:"Standard issue plate fee — ITD fee schedule"},
         {label:"Emergency Medical Services Fee",amount:1.25,note:"Flat statewide fee — Idaho Code § 49-445"},
-        {label:"Title Fee",amount:14.00,note:"State base fee. County admin adds $0–$18.75 depending on county"},
-        {label:"County Fee (approx)",amount:10.00,note:"County admin fee: $3–$14. Ada Co. adds highway district fee of $24–$40 depending on weight — verify with local county assessor"},
+        {label:"Title Fee",amount:14.00,note:"State base fee. County admin adds $7–$10 typically — ITD"},
+        {label:"County Fee (approx)",amount:9.00,note:"County admin fee: $7–$10 (averaged ~$1.50–$2.00 increase in 2026). Ada Co. adds highway district fee of $24–$40 depending on weight — verify with local county assessor"},
         ...(salesTax>0?[{label:"Sales/Use Tax (6.00% — statewide)",amount:+salesTax.toFixed(2),note:"Flat 6% — no local additions. Applied to purchase price less trade-in.",isTax:true}]:[]),
       ];
     },
-    notes:"Simple and predictable. Flat 6% statewide sales tax — no local rate variation. Age-based registration: $69 (1–2 yrs), $57 (3–6 yrs), $45 (7+ yrs). EV surcharge: +$140/yr. Plug-in hybrid surcharge: +$75/yr. Fees verified Mar 2026 — source: itd.idaho.gov.",
+    notes:"Simple and predictable. Flat 6% statewide sales tax — no local rate variation. Age-based registration: $69 (1–2 yrs), $57 (3–6 yrs), $45 (7+ yrs) — Idaho Code § 49-402, last changed July 2025. Optional 2-year renewal cycle available (fees double). EV surcharge: +$140/yr; plug-in hybrid: +$75/yr — Idaho Code § 49-457. County admin fees averaged a $1.50–$2.00 increase in 2026. Fees verified Mar 2026 — source: itd.idaho.gov.",
   },
   NM:{
     name:"New Mexico",lastVerified:"Mar 2026",
@@ -396,20 +434,21 @@ const STATE_DATA = {
       const {modelYear,weight}=deal;
       const age=new Date().getFullYear()-parseInt(modelYear);
       const w=parseInt(weight)||3500;
-      // Registration fee per NMSA 66-6-2: 3 weight classes, ~20% discount at 5+ years
-      const wf=w<2000?(age>=5?22:27):w<=3000?(age>=5?26:32):(age>=5?45:56);
+      // Registration fee per NMSA 66-6-2: 3 weight classes, age-based discount at 5+ years
+      const wf=w<=2000?(age>=5?21:27):w<=3000?(age>=5?31:39):(age>=5?45:56);
       const taxBase=taxableBase("NM",deal);
       const mvet=taxBase>0?taxBase*0.04:0;
       return[
-        {label:"Registration Weight Fee",amount:wf,note:"<2,000 lbs: $27/$22 | 2,001–3,000 lbs: $32/$26 | 3,000+ lbs: $56/$45 (under 5 yrs / 5+ yrs) — NMSA 66-6-2"},
-        {label:"Tire Recycling Fee",amount:1.50,note:"Statewide flat fee — NMSA 66-6-2"},
-        {label:"Administrative Fee",amount:2.00,note:"Per-transaction fee"},
-        {label:"Title Fee",amount:10.00},
-        {label:"Plate Fee",amount:5.00},
-        ...(mvet>0?[{label:"Motor Vehicle Excise Tax (4.00%)",amount:+mvet.toFixed(2),note:"Applied to purchase price less trade-in. Separate from NM gross receipts tax.",isTax:true}]:[]),
+        {label:"Registration Weight Fee",amount:wf,note:"≤2,000 lbs: $27/$21 | 2,001–3,000 lbs: $39/$31 | >3,000 lbs: $56/$45 (0–4 yrs / 5+ yrs) — NMSA 66-6-2"},
+        {label:"Tire Recycling Fee",amount:1.50,note:"Statewide flat fee"},
+        {label:"Administrative Fee",amount:4.50,note:"Per-transaction fee"},
+        {label:"Title Fee",amount:5.00},
+        {label:"Lien Recording Fee",amount:5.00,note:"Financed vehicles — included by default"},
+        {label:"Plate Transfer Fee",amount:10.00,note:"Transfer to new owner"},
+        ...(mvet>0?[{label:"Motor Vehicle Excise Tax (4.00%)",amount:+mvet.toFixed(2),note:"Applied to purchase price less trade-in and rebates. Statewide flat rate — no local variation, no caps.",isTax:true}]:[]),
       ];
     },
-    notes:"Weight + age only for registration — no MSRP needed. NM's 4% MVET is separate from their general gross receipts tax. Vehicles 5+ years old receive ~20% discount on registration fee. Enter purchase price in Deal Structure to calculate. Fees verified Mar 2026 — source: mvd.newmexico.gov, NMSA 66-6-2.",
+    notes:"Weight + age only for registration — no MSRP needed. MVET = (price − trade-in − rebates) × 4%, statewide flat with no local variation or caps. Doc fees are taxable under the dealer's local GRT rate (not MVET). Vehicles 5+ years old receive a discount on registration fee. Fees verified Mar 2026 — source: mvd.newmexico.gov, NMSA 66-6-2.",
   },
   CA:{
     name:"California",lastVerified:"Mar 2026",
@@ -1918,6 +1957,8 @@ function App(){
       weight:inputs.weight||3500,
       newVehicle:inputs.newVehicle==="yes",
       inRTA:inputs.inRTA||"no",
+      vehicleType:inputs.vehicleType||"car",
+      vehicleClass:inputs.vehicleClass||"automobile",
       tradeIn:deal.tradeIn||0,
       rebate:deal.rebate||0,
       transport:deal.transport||0,
@@ -2059,10 +2100,32 @@ function App(){
                   </div>
                 </Field>
               )}
+              {sd.zipMap&&sd.inputs.includes("county")&&(
+                <Field label="ZIP Code Lookup" hint="Auto-selects city & rate">
+                  <input
+                    value={inputs.zip||""}
+                    onChange={e=>{
+                      const z=e.target.value.replace(/\D/g,"").slice(0,5);
+                      hi("zip",z);
+                      if(z.length===5&&sd.zipMap[z]) hi("county",sd.zipMap[z]);
+                    }}
+                    placeholder="e.g. 80203"
+                    type="text"
+                    maxLength={5}
+                    style={iSt}
+                  />
+                  {inputs.zip&&inputs.zip.length===5&&!sd.zipMap[inputs.zip]&&(
+                    <div style={{fontSize:10,color:"#dc2626",marginTop:4}}>ZIP not found — select city manually below</div>
+                  )}
+                  {inputs.zip&&inputs.zip.length===5&&sd.zipMap[inputs.zip]&&(
+                    <div style={{fontSize:10,color:"#16a34a",marginTop:4}}>→ {sd.zipMap[inputs.zip]}</div>
+                  )}
+                </Field>
+              )}
               {sd.inputs.includes("county")&&sd.counties&&(
-                <Field label="County / Region">
+                <Field label={sd.countyLabel||"County / Region"}>
                   <select value={inputs.county||""} onChange={e=>hi("county",e.target.value)} style={sSt}>
-                    <option value="">Select county…</option>
+                    <option value="">{sd.countyLabel?"Select city…":"Select county…"}</option>
                     {sd.counties.map(c=><option key={c} value={c}>{c}</option>)}
                   </select>
                 </Field>
@@ -2081,6 +2144,24 @@ function App(){
                   <div style={{display:"flex",gap:8}}>
                     {[["yes","Yes — In RTA"],["no","No — Outside RTA"]].map(([v,l])=>(
                       <button key={v} onClick={()=>hi("inRTA",v)} style={{flex:1,padding:"8px",borderRadius:7,border:`1.5px solid ${inputs.inRTA===v?BRAND:BORDER}`,background:inputs.inRTA===v?BRAND_BG:"#fafafa",color:inputs.inRTA===v?BRAND_DARK:TEXT_MID,fontWeight:inputs.inRTA===v?700:400,fontSize:12,cursor:"pointer"}}>{l}</button>
+                    ))}
+                  </div>
+                </Field>
+              )}
+              {sd.inputs.includes("vehicleType")&&(
+                <Field label="Vehicle Type" hint="Affects the Specific Ownership Tax calculation">
+                  <div style={{display:"flex",gap:8}}>
+                    {[["car","Car / SUV"],["truck","Light Truck"]].map(([v,l])=>(
+                      <button key={v} onClick={()=>hi("vehicleType",v)} style={{flex:1,padding:"9px",borderRadius:7,border:`1.5px solid ${(inputs.vehicleType||"car")===v?BRAND:BORDER}`,background:(inputs.vehicleType||"car")===v?BRAND_BG:"#fafafa",color:(inputs.vehicleType||"car")===v?BRAND_DARK:TEXT_MID,fontWeight:(inputs.vehicleType||"car")===v?700:400,fontSize:13,cursor:"pointer"}}>{l}</button>
+                    ))}
+                  </div>
+                </Field>
+              )}
+              {sd.inputs.includes("vehicleClass")&&sd.vehicleClasses&&(
+                <Field label="Vehicle Class" hint="Determines county option tax depreciation schedule">
+                  <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+                    {sd.vehicleClasses.map(([v,l])=>(
+                      <button key={v} onClick={()=>hi("vehicleClass",v)} style={{flex:"1 1 calc(50% - 4px)",padding:"9px",borderRadius:7,border:`1.5px solid ${(inputs.vehicleClass||"automobile")===v?BRAND:BORDER}`,background:(inputs.vehicleClass||"automobile")===v?BRAND_BG:"#fafafa",color:(inputs.vehicleClass||"automobile")===v?BRAND_DARK:TEXT_MID,fontWeight:(inputs.vehicleClass||"automobile")===v?700:400,fontSize:13,cursor:"pointer"}}>{l}</button>
                     ))}
                   </div>
                 </Field>
@@ -2104,7 +2185,7 @@ function App(){
                   <Field label="Trade-In Value ($)" hint="Reduces taxable sale price in all states">
                     <DollarInput value={deal.tradeIn||""} onChange={v=>hd("tradeIn",v)} placeholder="0"/>
                   </Field>
-                  <Field label="Doc Fee ($)" hint="Taxable in NV, WA, CO, CA — exempt in AZ, ID, NM, WY">
+                  <Field label="Doc Fee ($)" hint="Taxable in NV, WA, CO, CA; NM: taxable under local GRT rate (not MVET) — exempt in AZ, ID, WY">
                     <DollarInput value={deal.docFee||""} onChange={v=>hd("docFee",v)} placeholder="0"/>
                   </Field>
                   <Field label="Transport / Delivery Fee ($)" hint="Taxable in NV, AZ, WA, CO — exempt in WY, ID, NM">
